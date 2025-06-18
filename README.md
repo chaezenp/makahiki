@@ -1,1 +1,1 @@
-# makahiki
+# makahiki games
