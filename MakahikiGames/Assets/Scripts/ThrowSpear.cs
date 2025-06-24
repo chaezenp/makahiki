@@ -6,6 +6,7 @@ public class ThrowSpear : MonoBehaviour
     public GameObject spear;
     public GameObject target;
     public float spearSpeed = 2f;
+    //public float strength = 0f;
     bool isMoving;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created

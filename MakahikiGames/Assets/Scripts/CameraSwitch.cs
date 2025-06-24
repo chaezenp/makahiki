@@ -27,14 +27,14 @@ public class CameraSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cam1 && Input.GetKeyDown(KeyCode.Tab))
+        if (cam1 && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.JoystickButton5)))
         {
             cameras[0].gameObject.SetActive(false);
             cam1 = false;
             cameras[1].gameObject.SetActive(true);
             cam2 = true;
         }
-        else if (cam2 && Input.GetKeyDown(KeyCode.Tab))
+        else if (cam2 && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.JoystickButton5)))
         {
             cameras[0].gameObject.SetActive(true);
             cam1 = true;
