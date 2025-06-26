@@ -14,6 +14,7 @@ public class ThrowSpear : MonoBehaviour
 
     public float strength = 0f;
     public float strengthMult = 4f;
+    public float maxCharge = 50f;
     private float timer = 0.0f;
     private int seconds = 0;
 
@@ -95,9 +96,20 @@ public class ThrowSpear : MonoBehaviour
     {
         timer += Time.deltaTime;
         seconds = (int)(timer % 60);
-        strength = timer * strengthMult;
+        if (strength != maxCharge || strength < maxCharge)
+        {
+            strength = timer * strengthMult;
+        }
+        if (strength >= maxCharge)
+        {
+            strength = maxCharge;
+        }
+        if (strength == 50)
+        {
+            Debug.Log(seconds);
+        }
         readyThrow = true;
-        if (seconds % 2 == 0)
+        if (seconds % 1 == 0)
         {
             Debug.Log("power: " + strength);
         }
