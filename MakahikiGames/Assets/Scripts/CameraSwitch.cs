@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraSwitch : MonoBehaviour
 {
     public Camera[] cameras;
-
+    public Vector3 cam2StartPos;
     bool cam1, cam2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,6 +57,7 @@ public class CameraSwitch : MonoBehaviour
         cam1 = true;
         cameras[1].gameObject.SetActive(false);
         cam2 = false;
+        cameras[1].transform.position = cam2StartPos;
     }
     
 }

@@ -44,24 +44,25 @@ public class SpearCollision : MonoBehaviour
             }
         }
 
-        // if (collision.CompareTag("Respawn"))
-        // {
-        //     onGround = true;
-        // }
-        //     if (collision.CompareTag("Out") || collision.CompareTag("BananTree"))
-        //     {
-        //         CameraSwitch.CamReset();
-        //     }
-        // }
-        // private void OnTriggerExit(Collider collision)
-        // {
-        //     // Check if the colliding object's layer is included in the freezeLayer
-        //     if (collision.CompareTag("SpearHoldBox"))
-        //     {
-        //         if (rb != null)
-        //         {
-        //            CameraSwitch.CamSwitch();
-        //         }
-        //     }
+        if (collision.CompareTag("Respawn"))
+        {
+            onGround = true;
+        }
+            if (collision.CompareTag("Out") || collision.CompareTag("BananTree"))
+            {
+                CameraSwitch.CamReset();
+            }
+        }
+        
+        private void OnTriggerExit(Collider collision)
+{
+    // Check if the colliding object's layer is included in the freezeLayer
+    if (collision.CompareTag("SpearHoldBox"))
+    {
+        if (rb != null)
+        {
+            CameraSwitch.CamSwitch();
+        }
     }
+}
 }

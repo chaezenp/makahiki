@@ -1,18 +1,24 @@
-// Code originally used by David Wood
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject spear;
-    public float offsetSmoothing;
-    private Vector3 spearPosition;
+    public Transform target; // The object the camera will follow
+    public Vector3 offset; // The desired offset from the target
+    public float smoothSpeed = 0.125f; // Smoothness of the follow
 
     void Update()
     {
-        spearPosition = new Vector3(spear.transform.position.x, spear.transform.position.y, transform.position.z);
+        // Calculate the desired position with the offset
+        Vector3 desiredPosition = target.position + offset;
 
-        transform.position = Vector3.Lerp(transform.position, spearPosition, offsetSmoothing * Time.deltaTime);
-    }   
+        // Smoothly move the camera towards the desired position
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+
+        // Apply the smoothed position to the camera's transform
+        transform.position = smoothedPosition;
+        //transform.rotation = Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0, -25, 0);
+
+        // Optionally, make the camera look at the target
+        transform.LookAt(target); 
+    }
 }

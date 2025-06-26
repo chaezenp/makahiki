@@ -9,6 +9,7 @@ public class ThrowSpear : MonoBehaviour
     public GameObject spear;
     public Rigidbody rb;
     public Vector3 startPos;
+    public Transform spearPos;
     public LayerMask tree;
     public Camera cam;
 
@@ -22,6 +23,7 @@ public class ThrowSpear : MonoBehaviour
     public bool isAiming;
     public bool isCharging;
     public bool readyThrow;
+    public bool isThrown;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +34,7 @@ public class ThrowSpear : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
         readyThrow = false;
+        isThrown = false;
     }
 
     // Update is called once per frame
@@ -39,9 +42,10 @@ public class ThrowSpear : MonoBehaviour
     {
         if (!isMoving)
         {
-            if (isAiming)
+            if (isAiming && !isThrown)
             {
-                //Camera.Aim();
+                
+                spear.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward) * Quaternion.Euler(90, 0, 0);
                 if (isCharging)
                 {
                     chargeSpear();
@@ -52,17 +56,20 @@ public class ThrowSpear : MonoBehaviour
                     Throw();
                     timer = 0f;
                     strength = 0f;
+                    isMoving = false;
+                    readyThrow = false;
+                    isThrown = true;
                 }
 
             }
         }
         //To reset spear for testing delete when three charges are implemented
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                spear.transform.position = startPos;
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-                spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
-                isMoving = false;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            spear.transform.position = startPos;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+            isThrown = false;
             }
 
     }
@@ -72,23 +79,12 @@ public class ThrowSpear : MonoBehaviour
 
         if (rb != null)
         {
-            // Convert mouse position to world coordinates
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            Vector3 direction;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                direction = (hit.point - transform.position).normalized;
-            }
-            else
-            {
-                direction = ray.direction; // If no hit, use ray direction
-            }
-
             // Apply force
-            rb.AddForce(direction * strength, ForceMode.Impulse);
-            readyThrow = false;
+            rb.AddForce(transform.forward * strength, ForceMode.Impulse);
+
+            //For Spawn in version
+            // GameObject spear = Instantiate(spearObject, spearPos.position, transform.rotation);
+            // spear.GetComponent<Rigidbody>().AddForce(transform.forward * strength, ForceMode.Impulse);
         }
     }
 
