@@ -1,16 +1,26 @@
+using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class ThrowSpear : MonoBehaviour
 {
 
     public GameObject spear;
     public Rigidbody rb;
-    public GameObject target;
-    public float spearSpeed = 2f;
-    public float strength = 0f;
-    bool isMoving;
     public Vector3 startPos;
     public LayerMask tree;
+    public Camera cam;
+
+    public float strength = 0f;
+    public float strengthMult = 4f;
+    private float timer = 0.0f;
+    private int seconds = 0;
+
+    bool isMoving;
+    public bool isAiming;
+    public bool isCharging;
+    public bool readyThrow;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,43 +30,45 @@ public class ThrowSpear : MonoBehaviour
             isMoving = false;
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
-        
+        readyThrow = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        // if (Input.GetButtonDown("Fire1"))
-        // {
-        //     isMoving = true;
-        // }
-        // if (isMoving && spear.transform.position != target.transform.position)
-        // {
-        //     spear.transform.position = Vector3.MoveTowards(spear.transform.position, target.transform.position, spearSpeed);
-
-        // }
-        // else if (isMoving && spear.transform.position == target.transform.position)
-        // {
-        //     isMoving = false;
-        // }
-        if (Input.GetButtonDown("Fire1"))
+        if (!isMoving)
         {
-            rb.constraints = RigidbodyConstraints.None;
-            Throw();
-        }
+            if (isAiming)
+            {
+                //Camera.Aim();
+                if (isCharging)
+                {
+                    chargeSpear();
+                }
+                if (!isCharging && readyThrow)
+                {
+                    rb.constraints = RigidbodyConstraints.None;
+                    Throw();
+                    timer = 0f;
+                    strength = 0f;
+                }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            spear.transform.position = startPos;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
         }
+        //To reset spear for testing delete when three charges are implemented
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                spear.transform.position = startPos;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                isMoving = false;
+            }
 
-        }
-
+    }
     void Throw()
     {
-        Camera cam = Camera.main;
+        isMoving = true;
+
         if (rb != null)
         {
             // Convert mouse position to world coordinates
@@ -75,7 +87,32 @@ public class ThrowSpear : MonoBehaviour
 
             // Apply force
             rb.AddForce(direction * strength, ForceMode.Impulse);
+            readyThrow = false;
         }
     }
-}
 
+    void chargeSpear()
+    {
+        timer += Time.deltaTime;
+        seconds = (int)(timer % 60);
+        strength = timer * strengthMult;
+        readyThrow = true;
+        if (seconds % 2 == 0)
+        {
+            Debug.Log("power: " + strength);
+        }
+    }
+
+    #region input bool
+    public void OnAiming(InputValue value)
+    {
+        isAiming = value.isPressed;
+    }
+
+    public void OnChargeThrow(InputValue value)
+    {
+        isCharging = value.isPressed;
+    }
+
+    #endregion
+}

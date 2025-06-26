@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public Camera[] cameras; 
+    public Camera[] cameras;
 
     bool cam1, cam2;
 
@@ -27,19 +27,36 @@ public class CameraSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cam1 && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.JoystickButton5)))
-        {
-            cameras[0].gameObject.SetActive(false);
-            cam1 = false;
-            cameras[1].gameObject.SetActive(true);
-            cam2 = true;
-        }
-        else if (cam2 && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.JoystickButton5)))
-        {
-            cameras[0].gameObject.SetActive(true);
-            cam1 = true;
-            cameras[1].gameObject.SetActive(false);
-            cam2 = false;
-        }
+        // if (cam1 && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.JoystickButton5)))
+        // {
+        //     cameras[0].gameObject.SetActive(false);
+        //     cam1 = false;
+        //     cameras[1].gameObject.SetActive(true);
+        //     cam2 = true;
+        // }
+        // else if (cam2 && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.JoystickButton5)))
+        // {
+        //     cameras[0].gameObject.SetActive(true);
+        //     cam1 = true;
+        //     cameras[1].gameObject.SetActive(false);
+        //     cam2 = false;
+        // }
     }
+
+    public void CamSwitch()
+    {
+        cameras[0].gameObject.SetActive(false);
+        cam1 = false;
+        cameras[1].gameObject.SetActive(true);
+        cam2 = true;
+    }
+
+    public void CamReset()
+    {
+        cameras[0].gameObject.SetActive(true);
+        cam1 = true;
+        cameras[1].gameObject.SetActive(false);
+        cam2 = false;
+    }
+    
 }
