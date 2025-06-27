@@ -7,6 +7,7 @@ TagManager:
   - BananTree
   - SpearHoldBox
   - Out
+  - Wind
   layers:
   - Default
   - TransparentFX
