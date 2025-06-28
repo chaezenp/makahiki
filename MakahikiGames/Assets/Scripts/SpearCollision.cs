@@ -61,7 +61,9 @@ public class SpearCollision : MonoBehaviour
         {
             onGround = true;
             rb.linearVelocity = Vector3.zero;
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX;
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+            rb.constraints = RigidbodyConstraints.FreezeRotationY;
         }
         if (collision.CompareTag("Out") || collision.CompareTag("BananTree"))
         {
