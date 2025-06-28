@@ -2,6 +2,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using System.Collections;
 
 public class ThrowSpear : MonoBehaviour
 {
@@ -44,6 +45,9 @@ public class ThrowSpear : MonoBehaviour
         {
             if (isAiming && !isThrown)
             {
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;   
+                
                 
                 spear.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward) * Quaternion.Euler(90, 0, 0);
                 if (isCharging)

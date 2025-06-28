@@ -60,6 +60,8 @@ public class SpearCollision : MonoBehaviour
         if (collision.CompareTag("Respawn"))
         {
             onGround = true;
+            rb.linearVelocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
         if (collision.CompareTag("Out") || collision.CompareTag("BananTree"))
         {
