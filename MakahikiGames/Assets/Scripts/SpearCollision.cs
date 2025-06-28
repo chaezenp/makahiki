@@ -7,6 +7,7 @@ public class SpearCollision : MonoBehaviour
     private Rigidbody rb;
     public CameraSwitch CameraSwitch;
     private bool onGround;
+    public float torque;
     private float timer = 0.0f;
     private int seconds = 0;
 
@@ -32,6 +33,12 @@ public class SpearCollision : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if(rb.linearVelocity != Vector3.zero){
+            rb.rotation = Quaternion.LookRotation(rb.linearVelocity) * Quaternion.Euler(90, 0, 0);  
+        }
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -48,11 +55,11 @@ public class SpearCollision : MonoBehaviour
         {
             onGround = true;
         }
-            if (collision.CompareTag("Out") || collision.CompareTag("BananTree"))
-            {
-                CameraSwitch.CamReset();
-            }
+        if (collision.CompareTag("Out") || collision.CompareTag("BananTree"))
+        {
+            CameraSwitch.CamReset();
         }
+    }
         
         private void OnTriggerExit(Collider collision)
 {
