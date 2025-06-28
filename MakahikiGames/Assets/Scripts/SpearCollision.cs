@@ -35,9 +35,13 @@ public class SpearCollision : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(rb.linearVelocity != Vector3.zero){
-            rb.rotation = Quaternion.LookRotation(rb.linearVelocity) * Quaternion.Euler(89, 0, 0);  
+        //Spear Rotation
+        //Where its facing (looks better?)
+        if (rb.linearVelocity != Vector3.zero)
+        {
+            rb.rotation = Quaternion.LookRotation(rb.linearVelocity) * Quaternion.Euler(89, 0, 0);
         }
+        //Math Way with center of mass
        // rb.AddForceAtPosition(rb.linearVelocity * -0.1f, transform.TransformPoint(0,-.5f,0));   
 
     }
