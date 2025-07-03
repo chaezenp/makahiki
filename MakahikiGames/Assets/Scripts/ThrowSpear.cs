@@ -1,4 +1,3 @@
-using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -25,6 +24,8 @@ public class ThrowSpear : MonoBehaviour
     public bool isCharging;
     public bool readyThrow;
     public bool isThrown;
+    public SpearUI SpearUI;
+    public SpearCollision spearCollision;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,9 +47,9 @@ public class ThrowSpear : MonoBehaviour
             if (isAiming && !isThrown)
             {
                 UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-                UnityEngine.Cursor.lockState = CursorLockMode.None;   
-                
-                
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+
+
                 spear.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward) * Quaternion.Euler(90, 0, 0);
                 if (isCharging)
                 {
@@ -63,6 +64,7 @@ public class ThrowSpear : MonoBehaviour
                     isMoving = false;
                     readyThrow = false;
                     isThrown = true;
+                    spearCollision.isThrown = isThrown;
                 }
 
             }
@@ -99,6 +101,7 @@ public class ThrowSpear : MonoBehaviour
         if (strength != maxCharge || strength < maxCharge)
         {
             strength = timer * strengthMult;
+            SpearUI.SpearCharge(strength);
         }
         if (strength >= maxCharge)
         {

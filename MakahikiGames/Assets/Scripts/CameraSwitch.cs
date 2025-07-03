@@ -3,8 +3,10 @@ using UnityEngine;
 public class CameraSwitch : MonoBehaviour
 {
     public Camera[] cameras;
+    public Camera MainCam;
     public Vector3 cam2StartPos;
-    bool cam1, cam2;
+    public Vector3 MainCamSetPos;
+    public GameObject Parentspear;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,9 +20,7 @@ public class CameraSwitch : MonoBehaviour
         // }
 
         cameras[0].gameObject.SetActive(true);
-        cam1 = true;
         cameras[1].gameObject.SetActive(false);
-        cam2 = false;
     }
     // if (Input.GetKeyDown(KeyCode.JoystickButton4))
 
@@ -43,21 +43,21 @@ public class CameraSwitch : MonoBehaviour
         // }
     }
 
-    public void CamSwitch()
+    public void SpearCamSwitch()
     {
         cameras[0].gameObject.SetActive(false);
-        cam1 = false;
         cameras[1].gameObject.SetActive(true);
-        cam2 = true;
+        //MainCam.transform.SetParent(Parentspear.transform, true);
     }
 
     public void CamReset()
     {
         cameras[0].gameObject.SetActive(true);
-        cam1 = true;
         cameras[1].gameObject.SetActive(false);
-        cam2 = false;
-        cameras[1].transform.position = cam2StartPos;
+        Debug.Log("RESET-CAM");
+        // MainCam.transform.SetParent(Parentspear.transform, false);
+        // MainCam.transform.position = MainCamSetPos;
+        //cameras[1].transform.position = cam2StartPos;
     }
     
 }
