@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using System.Collections;
+using NUnit.Framework;
+using UnityEngine.Rendering;
 
 public class ThrowSpear : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class ThrowSpear : MonoBehaviour
     public bool isThrown;
     public SpearUI SpearUI;
     public SpearCollision spearCollision;
+    public bool isPracticeMode = true;
+    public int ammoRemaining = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -70,13 +74,22 @@ public class ThrowSpear : MonoBehaviour
             }
         }
         //To reset spear for testing delete when three charges are implemented
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && ammoRemaining < 4)
         {
             spear.transform.position = startPos;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
             isThrown = false;
+            Debug.Log("bruh: " + ammoRemaining);
+            if (!isPracticeMode)
+            {
+                ammoRemaining++;
             }
+        }
+        else if (ammoRemaining > 3)
+        {
+            Debug.Log("No More Ammo");
+        }
 
     }
     void Throw()

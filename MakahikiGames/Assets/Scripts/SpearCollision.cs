@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class SpearCollision : MonoBehaviour
 
     private Rigidbody rb;
     public CameraSwitch CameraSwitch;
+    public ScoreSystem scoreSystem;
     private bool onGround;
     private float timer = 0.0f;
     private int seconds = 0;
@@ -13,6 +15,7 @@ public class SpearCollision : MonoBehaviour
     public bool timerOn;
     public int waitime = 5;
     public int savedWait;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,6 +67,7 @@ public class SpearCollision : MonoBehaviour
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 timerOn = true;
+                scoreSystem.Hit();
             }
         }
 
