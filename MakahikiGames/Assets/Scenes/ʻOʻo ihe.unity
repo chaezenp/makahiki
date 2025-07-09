@@ -1029,7 +1029,7 @@ MonoBehaviour:
   isThrown: 0
   SpearUI: {fileID: 663517770}
   spearCollision: {fileID: 1108460787}
-  isPracticeMode: 0
+  isPracticeMode: 1
   ammoRemaining: 0
 --- !u!114 &663517769
 MonoBehaviour:
