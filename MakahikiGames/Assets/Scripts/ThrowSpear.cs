@@ -8,6 +8,7 @@ using UnityEngine.Rendering;
 public class ThrowSpear : MonoBehaviour
 {
 
+    public bool isPracticeMode = true;
     public GameObject spear;
     public Rigidbody rb;
     public Vector3 startPos;
@@ -26,10 +27,12 @@ public class ThrowSpear : MonoBehaviour
     public bool isCharging;
     public bool readyThrow;
     public bool isThrown;
+    public bool isWin = false;
     public SpearUI SpearUI;
     public SpearCollision spearCollision;
-    public bool isPracticeMode = true;
+    public UIManager uiManager;
     public int ammoRemaining = 0;
+    public int maxAmmo = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,56 +44,70 @@ public class ThrowSpear : MonoBehaviour
         }
         readyThrow = false;
         isThrown = false;
+        if (!isPracticeMode)
+        {
+            Debug.Log("NOT PRACTICE MODE");
+            ammoRemaining = maxAmmo;
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving)
+        if (!isWin)
         {
-            if (isAiming && !isThrown)
+            if (!isMoving)
             {
-                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-                UnityEngine.Cursor.lockState = CursorLockMode.None;
-
-
-                spear.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward) * Quaternion.Euler(90, 0, 0);
-                if (isCharging)
+                if (isAiming && !isThrown)
                 {
-                    chargeSpear();
-                }
-                if (!isCharging && readyThrow)
-                {
-                    rb.constraints = RigidbodyConstraints.None;
-                    Throw();
-                    timer = 0f;
-                    strength = 0f;
-                    isMoving = false;
-                    readyThrow = false;
-                    isThrown = true;
-                    spearCollision.isThrown = isThrown;
-                }
+                    UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                    UnityEngine.Cursor.lockState = CursorLockMode.None;
 
+
+                    spear.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward) * Quaternion.Euler(90, 0, 0);
+                    if (isCharging)
+                    {
+                        chargeSpear();
+                    }
+                    if (!isCharging && readyThrow)
+                    {
+                        rb.constraints = RigidbodyConstraints.None;
+                        Throw();
+                        timer = 0f;
+                        strength = 0f;
+                        isMoving = false;
+                        readyThrow = false;
+                        isThrown = true;
+                        spearCollision.isThrown = isThrown;
+                        ammoRemaining--;
+
+                    }
+
+                }
+            }
+            //To reset spear for testing delete when three charges are implemented
+            if (Input.GetKeyDown(KeyCode.R) && ammoRemaining < maxAmmo && ammoRemaining > 0)
+            {
+                spear.transform.position = startPos;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                isThrown = false;
+                Debug.Log("bruh: " + ammoRemaining);
+                if (!isPracticeMode && (ammoRemaining != 0 || ammoRemaining > 0))
+                {
+                    uiManager.ammoRemaining(ammoRemaining);
+                }
+            }
+            else if (ammoRemaining == 0)
+            {
+                Debug.Log("No More Ammo");
             }
         }
-        //To reset spear for testing delete when three charges are implemented
-        if (Input.GetKeyDown(KeyCode.R) && ammoRemaining < 4)
-        {
-            spear.transform.position = startPos;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
-            spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
-            isThrown = false;
-            Debug.Log("bruh: " + ammoRemaining);
-            if (!isPracticeMode)
+        if (isWin)
             {
-                ammoRemaining++;
+                Debug.Log("WINNEr");
             }
-        }
-        else if (ammoRemaining > 3)
-        {
-            Debug.Log("No More Ammo");
-        }
-
     }
     void Throw()
     {
