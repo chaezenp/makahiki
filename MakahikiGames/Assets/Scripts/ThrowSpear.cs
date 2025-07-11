@@ -31,6 +31,7 @@ public class ThrowSpear : MonoBehaviour
     public SpearUI SpearUI;
     public SpearCollision spearCollision;
     public UIManager uiManager;
+    public CameraSwitch CameraSwitch;
     public int ammoRemaining = 0;
     public int maxAmmo = 3;
 
@@ -87,26 +88,16 @@ public class ThrowSpear : MonoBehaviour
                 }
             }
             //To reset spear for testing delete when three charges are implemented
-            if (Input.GetKeyDown(KeyCode.R) && ammoRemaining < maxAmmo && ammoRemaining > 0)
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                spear.transform.position = startPos;
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-                spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
-                isThrown = false;
-                Debug.Log("bruh: " + ammoRemaining);
-                if (!isPracticeMode && (ammoRemaining != 0 || ammoRemaining > 0))
-                {
-                    uiManager.ammoRemaining(ammoRemaining);
-                }
-            }
-            else if (ammoRemaining == 0)
-            {
-                Debug.Log("No More Ammo");
+                resetSpear();
             }
         }
         if (isWin)
             {
-                Debug.Log("WINNEr");
+            Debug.Log("WINNER");
+            CameraSwitch.CamReset();
+
             }
     }
     void Throw()
@@ -144,9 +135,30 @@ public class ThrowSpear : MonoBehaviour
         readyThrow = true;
         if (seconds % 1 == 0)
         {
-            Debug.Log("power: " + strength);
+            //Debug.Log("power: " + strength);
         }
     }
+
+    void resetSpear()
+    {
+        if (isPracticeMode || (ammoRemaining < maxAmmo && ammoRemaining > 0 && !isPracticeMode))
+            {
+                spear.transform.position = startPos;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                isThrown = false;
+                Debug.Log("resetSpear");
+                if (!isPracticeMode && (ammoRemaining != 0 || ammoRemaining > 0))
+                {
+                    uiManager.ammoRemaining(ammoRemaining);
+                }
+            }
+            if (ammoRemaining == 0 && !isPracticeMode)
+            {
+                Debug.Log("No More Ammo");
+            }
+    }
+    
 
     #region input bool
     public void OnAiming(InputValue value)

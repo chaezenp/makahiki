@@ -13,6 +13,7 @@ public class ScoreSystem : MonoBehaviour
     public GameObject spear;
     public int scoreToBeat = 5;
     public string nextScene;
+    public bool isPractice;
     private bool timerOn;
     public int waitime = 5;
     public int savedWait;
@@ -24,6 +25,7 @@ public class ScoreSystem : MonoBehaviour
         uiManager.ScoreToBeat(scoreToBeat);
         timerOn = false;
         savedWait = waitime;
+        isPractice = throwSpear.isPracticeMode;
     }
 
     public void Hit()
@@ -38,12 +40,12 @@ public class ScoreSystem : MonoBehaviour
         }
         if (distance < 2 && distance > 1)
         {
-            AddScore(4);
+            AddScore(3);
             Debug.Log("dist: " + distance);
         }
         if (distance < 3 && distance > 2)
         {
-            AddScore(3);
+            AddScore(2);
             Debug.Log("dist: " + distance);
         }
         if (distance < 5 && distance > 3)
@@ -58,7 +60,7 @@ public class ScoreSystem : MonoBehaviour
     {
         score += points;
         uiManager.UpdateScore(score); // Call the UpdateScore method
-        if (score >= scoreToBeat)
+        if (score >= scoreToBeat && !isPractice)
         {
             uiManager.YouWin(true);
             throwSpear.isWin = true;

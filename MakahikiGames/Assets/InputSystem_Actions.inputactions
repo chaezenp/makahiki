@@ -274,7 +274,7 @@
                 {
                     "name": "",
                     "id": "d5cefd47-1bd4-403c-a4ad-5b581935d423",
-                    "path": "<Mouse>/position",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -537,7 +537,7 @@
                 },
                 {
                     "name": "",
-                    "id": "a8c53653-b687-4344-add4-d29135472380",
+                    "id": "fa68f2a3-f1d8-4082-8e59-ca895f926f55",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",

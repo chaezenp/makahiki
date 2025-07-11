@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
         isPractice = throwSpear.isPracticeMode;
         if (isPractice)
         {
-            Debug.Log("it worked eurkea");
             ammoLeft.enabled = false;
             BeatThisText.enabled = false;
         }
