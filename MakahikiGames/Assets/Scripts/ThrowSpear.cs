@@ -27,6 +27,7 @@ public class ThrowSpear : MonoBehaviour
     public bool isCharging;
     public bool readyThrow;
     public bool isThrown;
+    public bool gamepadB;
     public bool isWin = false;
     public SpearUI SpearUI;
     public SpearCollision spearCollision;
@@ -88,7 +89,7 @@ public class ThrowSpear : MonoBehaviour
                 }
             }
             //To reset spear for testing delete when three charges are implemented
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) || gamepadB)
             {
                 resetSpear();
             }
