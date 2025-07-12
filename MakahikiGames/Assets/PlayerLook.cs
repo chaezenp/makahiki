@@ -7,6 +7,7 @@ public class PlayerLook : MonoBehaviour
 {
 
     public GameObject player;
+    public Camera maincam;
     public ThrowSpear throwSpear;
     public bool isAiming;
     public bool isCharging;
@@ -21,7 +22,7 @@ public class PlayerLook : MonoBehaviour
     {
         if (isAiming)
         {
-            player.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+            player.transform.rotation = Quaternion.LookRotation(maincam.transform.forward);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {

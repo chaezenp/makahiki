@@ -37,12 +37,15 @@ public class UIManager : MonoBehaviour
     }
     public void ScoreToBeat(int ScoreBeat)
     {
-        BeatThisText.text = "Need to Beat: " + ScoreBeat.ToString();
+        BeatThisText.text = "To Beat: " + ScoreBeat.ToString();
     }
     public void ammoRemaining(int ammoRemains)
     {
         ammoLeft.text = "Spears left: " + ammoRemains.ToString();
-        SpearsLeft[ammoRemains].enabled = false;
+        if (ammoRemains >= 0 && ammoRemains < SpearsLeft.Length)
+        {
+            SpearsLeft[ammoRemains].enabled = false;
+        }
     }
 
     public void YouWin(bool Win)
