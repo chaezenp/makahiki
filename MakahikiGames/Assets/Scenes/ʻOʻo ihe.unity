@@ -1138,6 +1138,9 @@ MonoBehaviour:
   mouseSensitivity: 0.2
   gamepadSensitivity: 2
   verticalLookLimit: 90
+  _isAiming: 0
+  _isCharging: 0
+  throwSpear: {fileID: 663517768}
 --- !u!114 &663517768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,7 +1161,7 @@ MonoBehaviour:
   tree:
     serializedVersion: 2
     m_Bits: 64
-  cam: {fileID: 663517764}
+  Maincam: {fileID: 663517764}
   strength: 0
   strengthMult: 9
   maxCharge: 50
@@ -1173,6 +1176,7 @@ MonoBehaviour:
   CameraSwitch: {fileID: 0}
   ammoRemaining: 0
   maxAmmo: 3
+  timerON: 0
 --- !u!114 &663517769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,7 +1964,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -3501,7 +3505,7 @@ MonoBehaviour:
   tree:
     serializedVersion: 2
     m_Bits: 64
-  cam: {fileID: 663517764}
+  Maincam: {fileID: 0}
   strength: 0
   strengthMult: 4
   maxCharge: 50
@@ -3516,6 +3520,7 @@ MonoBehaviour:
   CameraSwitch: {fileID: 0}
   ammoRemaining: 0
   maxAmmo: 3
+  timerON: 0
 --- !u!114 &1853957574
 MonoBehaviour:
   m_ObjectHideFlags: 0

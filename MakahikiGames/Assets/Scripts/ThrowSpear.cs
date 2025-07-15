@@ -14,7 +14,7 @@ public class ThrowSpear : MonoBehaviour
     public Vector3 startPos;
     public Transform spearPos;
     public LayerMask tree;
-    public Camera cam;
+    public Camera Maincam;
 
     public float strength = 0f;
     public float strengthMult = 4f;
@@ -62,11 +62,11 @@ public class ThrowSpear : MonoBehaviour
             {
                 if (isAiming && !isThrown)
                 {
-                    UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-                    UnityEngine.Cursor.lockState = CursorLockMode.None;
+                    //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                    //UnityEngine.Cursor.lockState = CursorLockMode.None;
 
 
-                    spear.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward) * Quaternion.Euler(90, 0, 0);
+                    spear.transform.rotation = Quaternion.LookRotation(Maincam.transform.forward) * Quaternion.Euler(90, 0, 0);
                     if (isCharging)
                     {
                         chargeSpear();
@@ -89,17 +89,17 @@ public class ThrowSpear : MonoBehaviour
                 }
             }
             //To reset spear for testing delete when three charges are implemented
-            if (Input.GetKeyDown(KeyCode.R)  || Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Respawn"))
             {
                 resetSpear();
             }
         }
         if (isWin)
-            {
+        {
             Debug.Log("WINNER");
             CameraSwitch.CamReset();
 
-            }
+        }
     }
     void Throw()
     {
@@ -156,14 +156,13 @@ public class ThrowSpear : MonoBehaviour
                 Debug.Log("No More Ammo");
             }
     }
-    
+
 
     #region input bool
     public void OnAiming(InputValue value)
     {
         isAiming = value.isPressed;
     }
-
     public void OnChargeThrow(InputValue value)
     {
         isCharging = value.isPressed;

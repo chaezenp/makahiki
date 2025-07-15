@@ -49,9 +49,12 @@ public class PlayerLook : MonoBehaviour
     public void OnAiming(InputValue value)
     {
         isAiming = value.isPressed;
+        Debug.Log("is Pressed: aiming");
     }
-        public void OnChargeThrow(InputValue value)
+    public void OnChargeThrow(InputValue value)
     {
         isCharging = value.isPressed;
+        Debug.Log("is Pressed: charge");
+
     }
 }
