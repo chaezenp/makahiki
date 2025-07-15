@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SpearCollision : MonoBehaviour
 {
-
+    [SerializeField] private Transform spearHead;
     private Rigidbody rb;
     public CameraSwitch CameraSwitch;
     public ScoreSystem scoreSystem;
+    
     private bool onGround;
     private float timer = 0.0f;
     private int seconds = 0;
@@ -67,7 +68,13 @@ public class SpearCollision : MonoBehaviour
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 timerOn = true;
-                scoreSystem.Hit();
+                
+            Vector3 impactPoint = spearHead.position;
+            Debug.Log("Impact Point: " + impactPoint);
+
+
+            // Calculate distance from impact point to center of the target
+            scoreSystem.Hit(impactPoint);
             }
         }
 
@@ -85,6 +92,15 @@ public class SpearCollision : MonoBehaviour
             waitime = 0;
         }
     }
+
+    // public void CollisionEnter(Collision collision)
+    // {
+    //     foreach (ContactPoint contact in collision.contacts)
+    //     {
+    //         Debug.Log("Spear hit at point: " + contact.point);
+    //         scoreSystem.Hit();
+    //     }
+    // }
 
     public void OnTriggerExit(Collider collision)
     {

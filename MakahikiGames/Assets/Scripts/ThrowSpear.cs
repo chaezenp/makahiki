@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 
 public class ThrowSpear : MonoBehaviour
 {
+[SerializeField] private GameObject spearObject;
 
     public bool isPracticeMode = true;
     public GameObject spear;
@@ -32,6 +33,8 @@ public class ThrowSpear : MonoBehaviour
     public SpearCollision spearCollision;
     public UIManager uiManager;
     public CameraSwitch CameraSwitch;
+    [SerializeField] private InputActionReference aimAction;
+    [SerializeField] private InputActionReference chargeAction;
     public int ammoRemaining = 0;
     public int maxAmmo = 3;
 
@@ -56,6 +59,9 @@ public class ThrowSpear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            isAiming = aimAction.action.IsPressed(); 
+            isCharging = chargeAction.action.IsPressed();
+
         if (!isWin)
         {
             if (!isMoving)
@@ -107,12 +113,18 @@ public class ThrowSpear : MonoBehaviour
 
         if (rb != null)
         {
-            // Apply force
-            rb.AddForce(transform.forward * strength, ForceMode.Impulse);
+            // center of screen aim
+            // Vector3 aimDir = Maincam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2)).direction;
+
+            // rb.AddForce(aimDir.normalized * strength, ForceMode.Impulse);
+
+            //Camera forward aim
+            rb.AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
 
             //For Spawn in version
-            // GameObject spear = Instantiate(spearObject, spearPos.position, transform.rotation);
-            // spear.GetComponent<Rigidbody>().AddForce(transform.forward * strength, ForceMode.Impulse);
+            
+            //GameObject spear = Instantiate(spearObject, spearPos.position, transform.rotation);
+            //spear.GetComponent<Rigidbody>().AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
         }
     }
 
@@ -157,16 +169,4 @@ public class ThrowSpear : MonoBehaviour
             }
     }
 
-
-    #region input bool
-    public void OnAiming(InputValue value)
-    {
-        isAiming = value.isPressed;
-    }
-    public void OnChargeThrow(InputValue value)
-    {
-        isCharging = value.isPressed;
-    }
-
-    #endregion
 }
