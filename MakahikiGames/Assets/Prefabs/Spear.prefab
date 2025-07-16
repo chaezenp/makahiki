@@ -254,6 +254,7 @@ Transform:
   - {fileID: 8162225509710482929}
   - {fileID: 2925658887999284083}
   - {fileID: 612822733977147674}
+  - {fileID: 7898414821381735096}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &8281043502031162241
@@ -371,12 +372,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f23e3070f7c3d843b83fbb04adfcfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spearHead: {fileID: 0}
   CameraSwitch: {fileID: 0}
   scoreSystem: {fileID: 0}
+  LinePoint: {fileID: 0}
+  TheLine: {x: 0, y: 0, z: 0}
   isThrown: 0
   timerOn: 0
   waitime: 3
   savedWait: 0
+--- !u!1 &6883192287725958248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7898414821381735096}
+  m_Layer: 0
+  m_Name: Linepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7898414821381735096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6883192287725958248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8462180778559321458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8560416718110960154
 PrefabInstance:
   m_ObjectHideFlags: 0
