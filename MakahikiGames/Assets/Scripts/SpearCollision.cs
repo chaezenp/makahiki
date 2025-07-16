@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SpearCollision : MonoBehaviour
 {
-
+    [SerializeField] private Transform spearHead;
     private Rigidbody rb;
     public CameraSwitch CameraSwitch;
     public ScoreSystem scoreSystem;
+    public GameObject LinePoint;
+    public Vector3 TheLine;
+
     private bool onGround;
     private float timer = 0.0f;
     private int seconds = 0;
@@ -15,7 +18,7 @@ public class SpearCollision : MonoBehaviour
     public bool timerOn;
     public int waitime = 5;
     public int savedWait;
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +33,7 @@ public class SpearCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TheLine = LinePoint.transform.position;
         if (onGround || timerOn)
         {
             timer += Time.deltaTime;
@@ -55,7 +59,7 @@ public class SpearCollision : MonoBehaviour
             rb.rotation = Quaternion.LookRotation(rb.linearVelocity) * Quaternion.Euler(89, 0, 0);
         }
         //Math Way with center of mass
-       // rb.AddForceAtPosition(rb.linearVelocity * -0.1f, transform.TransformPoint(0,-.5f,0));   
+        // rb.AddForceAtPosition(rb.linearVelocity * -0.1f, transform.TransformPoint(0,-.5f,0));   
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -67,7 +71,13 @@ public class SpearCollision : MonoBehaviour
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 timerOn = true;
-                scoreSystem.Hit();
+
+                Vector3 impactPoint = spearHead.position;
+                Debug.Log("Impact Point: " + impactPoint);
+
+
+                // Calculate distance from impact point to center of the target
+                scoreSystem.Hit(impactPoint);
             }
         }
 
@@ -86,6 +96,15 @@ public class SpearCollision : MonoBehaviour
         }
     }
 
+    // public void CollisionEnter(Collision collision)
+    // {
+    //     foreach (ContactPoint contact in collision.contacts)
+    //     {
+    //         Debug.Log("Spear hit at point: " + contact.point);
+    //         scoreSystem.Hit();
+    //     }
+    // }
+
     public void OnTriggerExit(Collider collision)
     {
         // Check if the colliding object's layer is included in the freezeLayer
@@ -96,5 +115,10 @@ public class SpearCollision : MonoBehaviour
                 CameraSwitch.SpearCamSwitch();
             }
         }
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, TheLine);
     }
 }

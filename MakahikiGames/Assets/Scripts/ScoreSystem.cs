@@ -11,6 +11,9 @@ public class ScoreSystem : MonoBehaviour
     public ThrowSpear throwSpear;
     public GameObject target;
     public GameObject spear;
+    public Vector3 spearTip;
+    public GameObject spearHead;
+
     public int scoreToBeat = 5;
     public string nextScene;
     public bool isPractice;
@@ -19,6 +22,10 @@ public class ScoreSystem : MonoBehaviour
     public int savedWait;
     private float timer = 0.0f;
     private int seconds = 0;
+    public float maxPt = 1f;
+    public float sndPt = 2f;
+    public float thrdPT = 3f;
+    public float lastPt = 4f;
 
     void Start()
     {
@@ -28,27 +35,27 @@ public class ScoreSystem : MonoBehaviour
         isPractice = throwSpear.isPracticeMode;
     }
 
-    public void Hit()
+    public void Hit(Vector3 impactPoint)
     {
-        float distance = Vector3.Distance(target.transform.position, spear.transform.position);
+        float distance = Vector3.Distance(impactPoint, target.transform.position);
 
-        if (distance < 1)
+        if (distance < maxPt)
         {
             AddScore(5);
             Debug.Log("dist: " + distance);
 
         }
-        if (distance < 2 && distance > 1)
+        if (distance < sndPt && distance > maxPt)
         {
             AddScore(3);
             Debug.Log("dist: " + distance);
         }
-        if (distance < 3 && distance > 2)
+        if (distance < thrdPT && distance > sndPt)
         {
             AddScore(2);
             Debug.Log("dist: " + distance);
         }
-        if (distance < 5 && distance > 3)
+        if (distance < lastPt && distance > thrdPT)
         {
             AddScore(1);
             Debug.Log("dist: " + distance);
@@ -67,18 +74,21 @@ public class ScoreSystem : MonoBehaviour
             timerOn = true;
         }
     }
-    void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireSphere(target.transform.position, 4f);
-        Gizmos.DrawWireSphere(target.transform.position, 1f);
-        Gizmos.DrawWireSphere(target.transform.position, 2f);
-        Gizmos.DrawWireSphere(target.transform.position, 3f);
+        Gizmos.DrawWireSphere(target.transform.position, lastPt);
+        Gizmos.DrawWireSphere(target.transform.position, maxPt);
+        Gizmos.DrawWireSphere(target.transform.position, sndPt);
+        Gizmos.DrawWireSphere(target.transform.position, thrdPT);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(spearTip, target.transform.position);
 
     }
 
-        void Update()
+    void Update()
     {
         if (timerOn)
         {
@@ -93,5 +103,6 @@ public class ScoreSystem : MonoBehaviour
 
             }
         }
+        spearTip = spearHead.transform.position;
     }
 }
