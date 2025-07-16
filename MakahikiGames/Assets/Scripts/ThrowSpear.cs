@@ -16,7 +16,7 @@ public class ThrowSpear : MonoBehaviour
     public Transform spearPos;
     public LayerMask tree;
     public Camera Maincam;
-    public ArcPreview drawArc;
+    //public ArcPreview drawArc;
 
     public float strength = 0f;
     public float strengthMult = 4f;
@@ -90,7 +90,7 @@ public class ThrowSpear : MonoBehaviour
                         spearCollision.isThrown = isThrown;
                         ammoRemaining--;
                         uiManager.ammoRemaining(ammoRemaining);
-                        drawArc.isThrown = isThrown;
+                        //drawArc.isThrown = isThrown;
 
                     }
 
@@ -121,7 +121,7 @@ public class ThrowSpear : MonoBehaviour
             // rb.AddForce(aimDir.normalized * strength, ForceMode.Impulse);
 
             //Camera forward aim
-            rb.AddForce(spear.transform.up * strength, ForceMode.Impulse);
+            rb.AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
 
             //For Spawn in version
             
@@ -138,7 +138,7 @@ public class ThrowSpear : MonoBehaviour
         {
             strength = timer * strengthMult;
             SpearUI.SpearCharge(strength);
-            drawArc.launchForce = strength;
+            //drawArc.launchForce = strength;
         }
         if (strength >= maxCharge)
         {
@@ -164,8 +164,7 @@ public class ThrowSpear : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
             spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
             isThrown = false;
-            spearCollision.isThrown = false;
-            drawArc.isThrown = isThrown;
+           //drawArc.isThrown = isThrown;
             Debug.Log("resetSpear");
         }
             if (ammoRemaining == 0 && !isPracticeMode)
