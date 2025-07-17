@@ -116,6 +116,17 @@ public class SpearCollision : MonoBehaviour
             }
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Vector3 hitPoint = collision.contacts[0].point;
+            Debug.Log("Spear hit ground at: " + hitPoint);
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            Debug.DrawRay(hitPoint, Vector3.up * 2, Color.red, 5f); // Red marker lasts 5 sec
+
+        }
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
