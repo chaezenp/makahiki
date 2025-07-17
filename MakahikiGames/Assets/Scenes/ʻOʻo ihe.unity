@@ -1289,6 +1289,11 @@ TerrainCollider:
   serializedVersion: 2
   m_TerrainData: {fileID: 0}
   m_EnableTreeColliders: 0
+--- !u!1 &741398488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6883192287725958248, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+  m_PrefabInstance: {fileID: 1557093239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &760551620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,6 +2846,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3268110068884837704, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: LinePoint
+      value: 
+      objectReference: {fileID: 741398488}
+    - target: {fileID: 3268110068884837704, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: spearHead
+      value: 
+      objectReference: {fileID: 1725094725}
+    - target: {fileID: 3268110068884837704, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: scoreSystem
       value: 
       objectReference: {fileID: 1057240521}
@@ -3319,6 +3332,11 @@ MeshCollider:
 --- !u!1 &1725094724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5050493048895167750, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+  m_PrefabInstance: {fileID: 1557093239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1725094725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 612822733977147674, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
   m_PrefabInstance: {fileID: 1557093239}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811206197 stripped
