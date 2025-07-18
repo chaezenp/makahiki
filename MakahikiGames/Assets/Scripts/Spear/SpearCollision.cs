@@ -114,7 +114,9 @@ public class SpearCollision : MonoBehaviour
 
             if (dot > 0.85f) // Only stick if tip hits target
             {
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                scoreSystem.Hit(contact.point);
+
             }
 
             // Speed based embed
@@ -127,7 +129,6 @@ public class SpearCollision : MonoBehaviour
             //transform.position = contact.point - transform.up * embedDepth;
 
             Debug.DrawRay(contact.point, Vector3.up * 2, Color.cyan, 5f);
-            scoreSystem.Hit(contact.point);
 
             timerOn = true;
         }
