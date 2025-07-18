@@ -32,7 +32,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void OnLookPerformed(InputAction.CallbackContext context)
     {
         Vector2 lookInput = context.ReadValue<Vector2>();
-        Debug.Log("Look Input: " + lookInput); // 👈 add this
+//        Debug.Log("Look Input: " + lookInput); // 👈 add this
         OnLookInput?.Invoke(lookInput);
     }
 

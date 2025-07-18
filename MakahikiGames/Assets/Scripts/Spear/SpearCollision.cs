@@ -18,6 +18,7 @@ public class SpearCollision : MonoBehaviour
     public bool timerOn;
     public int waitime = 5;
     public int savedWait;
+    public bool canReset;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,6 +29,7 @@ public class SpearCollision : MonoBehaviour
         isThrown = false;
         timerOn = false;
         savedWait = waitime;
+        canReset = false;
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class SpearCollision : MonoBehaviour
                 //NextSpear.Next();
                 timerOn = false;
                 onGround = false;
+                canReset = true;
                 timer = 0;
                 waitime = savedWait;
             }
@@ -64,23 +67,6 @@ public class SpearCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        // Check if the colliding object's layer is included in the freezeLayer
-        if (collision.CompareTag("BananTree"))
-        {
-            if (rb != null)
-            {
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-                timerOn = true;
-
-                Vector3 impactPoint = spearHead.position;
-                Debug.Log("Impact Point: " + impactPoint);
-
-
-                // Calculate distance from impact point to center of the target
-                scoreSystem.Hit(impactPoint);
-            }
-        }
-
         if (collision.CompareTag("Respawn"))
         {
             onGround = true;
@@ -96,15 +82,6 @@ public class SpearCollision : MonoBehaviour
         }
     }
 
-    // public void CollisionEnter(Collision collision)
-    // {
-    //     foreach (ContactPoint contact in collision.contacts)
-    //     {
-    //         Debug.Log("Spear hit at point: " + contact.point);
-    //         scoreSystem.Hit();
-    //     }
-    // }
-
     public void OnTriggerExit(Collider collision)
     {
         // Check if the colliding object's layer is included in the freezeLayer
@@ -112,6 +89,7 @@ public class SpearCollision : MonoBehaviour
         {
             if (rb != null && isThrown)
             {
+                canReset = false;
                 CameraSwitch.SpearCamSwitch();
             }
         }
@@ -125,6 +103,34 @@ public class SpearCollision : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
             Debug.DrawRay(hitPoint, Vector3.up * 2, Color.red, 5f); // Red marker lasts 5 sec
 
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("BanaTree"))
+        {
+            ContactPoint contact = collision.contacts[0];
+            Debug.Log("Spear hit target at: " + contact.point);
+            Vector3 spearForward = transform.up;
+            Vector3 contactNormal = -contact.normal;
+            float dot = Vector3.Dot(spearForward, contactNormal);
+
+            if (dot > 0.85f) // Only stick if tip hits target
+            {
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                scoreSystem.Hit(contact.point);
+
+            }
+
+            // Speed based embed
+            //float speed = rb.linearVelocity.magnitude;
+            //float embedDepth = Mathf.Clamp(speed * 0.00025f, 0.005f, 0.025f);
+
+            // static embed
+            //float embedDepth = 0.00025f;
+
+            //transform.position = contact.point - transform.up * embedDepth;
+
+            Debug.DrawRay(contact.point, Vector3.up * 2, Color.cyan, 5f);
+
+            timerOn = true;
         }
     }
     void OnDrawGizmos()
