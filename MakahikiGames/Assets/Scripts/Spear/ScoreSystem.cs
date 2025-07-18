@@ -22,10 +22,11 @@ public class ScoreSystem : MonoBehaviour
     public int savedWait;
     private float timer = 0.0f;
     private int seconds = 0;
-    public float maxPt = 1f;
-    public float sndPt = 2f;
-    public float thrdPT = 3f;
-    public float lastPt = 4f;
+    public float fivePt = 1f;
+    public float fourPt = 2f;
+    public float threePt = 3f;
+    public float twoPt = 4f;
+    public float onePt = 5f;
 
     void Start()
     {
@@ -39,26 +40,35 @@ public class ScoreSystem : MonoBehaviour
     {
         float distance = Vector3.Distance(impactPoint, target.transform.position);
 
-        if (distance < maxPt)
+        if (distance <= fivePt)
         {
             AddScore(5);
             Debug.Log("dist: " + distance);
 
         }
-        if (distance < sndPt && distance > maxPt)
+        if (distance <= fourPt && distance > fivePt)
+        {
+            AddScore(4);
+            Debug.Log("dist: " + distance);
+        }
+        if (distance <= threePt && distance > fourPt)
         {
             AddScore(3);
             Debug.Log("dist: " + distance);
         }
-        if (distance < thrdPT && distance > sndPt)
+        if (distance <= twoPt && distance > threePt)
         {
             AddScore(2);
             Debug.Log("dist: " + distance);
         }
-        if (distance < lastPt && distance > thrdPT)
+        if (distance <= onePt && distance > twoPt)
         {
             AddScore(1);
             Debug.Log("dist: " + distance);
+        }
+        if (distance > onePt)
+        {
+            Debug.Log("Miss");
         }
 
         Debug.Log(score);
@@ -78,10 +88,11 @@ public class ScoreSystem : MonoBehaviour
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireSphere(target.transform.position, lastPt);
-        Gizmos.DrawWireSphere(target.transform.position, maxPt);
-        Gizmos.DrawWireSphere(target.transform.position, sndPt);
-        Gizmos.DrawWireSphere(target.transform.position, thrdPT);
+        Gizmos.DrawWireSphere(target.transform.position, onePt);
+        Gizmos.DrawWireSphere(target.transform.position, twoPt);
+        Gizmos.DrawWireSphere(target.transform.position, threePt);
+        Gizmos.DrawWireSphere(target.transform.position, fourPt);
+        Gizmos.DrawWireSphere(target.transform.position, fivePt);
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(spearTip, target.transform.position);

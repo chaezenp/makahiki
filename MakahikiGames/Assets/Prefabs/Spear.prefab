@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 1836765610465559546}
   - component: {fileID: 1126132238146531967}
   - component: {fileID: 3268110068884837704}
+  - component: {fileID: 3101339380126522347}
   m_Layer: 0
   m_Name: Spear
   m_TagString: Untagged
@@ -317,7 +318,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217469856201590177}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bf7590d81e098ec4abdf54b94729b0b5, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -357,9 +358,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &3268110068884837704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,6 +382,20 @@ MonoBehaviour:
   timerOn: 0
   waitime: 3
   savedWait: 0
+--- !u!114 &3101339380126522347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217469856201590177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d187bc9d3bd5b142acd238d0514ed6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windSpeed: 0
+  windDir: {x: 1, y: 0, z: 0}
 --- !u!1 &6883192287725958248
 GameObject:
   m_ObjectHideFlags: 0

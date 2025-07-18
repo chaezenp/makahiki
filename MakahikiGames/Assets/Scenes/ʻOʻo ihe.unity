@@ -988,7 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windSpeed: 0
-  isLeft: 0
+  windDir: {x: 1, y: 0, z: 0}
 --- !u!65 &619327376
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1255,6 +1255,7 @@ MonoBehaviour:
   isCharging: 0
   readyThrow: 0
   isThrown: 0
+  canReset: 0
   isWin: 0
   SpearUI: {fileID: 663517770}
   spearCollision: {fileID: 1108460787}
@@ -1866,10 +1867,11 @@ MonoBehaviour:
   isPractice: 0
   waitime: 3
   savedWait: 0
-  maxPt: 1
-  sndPt: 2
-  thrdPT: 3
-  lastPt: 4
+  fivePt: 0.9
+  fourPt: 1.5
+  threePt: 2.6
+  twoPt: 3.8
+  onePt: 5.2
 --- !u!4 &1057240522
 Transform:
   m_ObjectHideFlags: 0
@@ -2454,7 +2456,7 @@ MonoBehaviour:
   - {fileID: 1044052289}
   - {fileID: 1270848025}
   - {fileID: 1087378111}
-  throwSpear: {fileID: 0}
+  throwSpear: {fileID: 663517773}
   isPractice: 0
 --- !u!1 &1270848023
 GameObject:
@@ -3415,6 +3417,7 @@ MonoBehaviour:
   isCharging: 0
   readyThrow: 0
   isThrown: 0
+  canReset: 0
   isWin: 0
   SpearUI: {fileID: 0}
   spearCollision: {fileID: 0}

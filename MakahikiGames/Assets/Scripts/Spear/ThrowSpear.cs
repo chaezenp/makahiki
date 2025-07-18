@@ -29,6 +29,7 @@ public class ThrowSpear : MonoBehaviour
     public bool isCharging;
     public bool readyThrow;
     public bool isThrown;
+    public bool canReset = false;
     public bool isWin = false;
     public SpearUI SpearUI;
     public SpearCollision spearCollision;
@@ -62,6 +63,8 @@ public class ThrowSpear : MonoBehaviour
     {
             isAiming = aimAction.action.IsPressed(); 
             isCharging = chargeAction.action.IsPressed();
+            canReset = spearCollision.canReset;
+
 
         if (!isWin)
         {
@@ -97,7 +100,7 @@ public class ThrowSpear : MonoBehaviour
                 }
             }
             //To reset spear for testing delete when three charges are implemented
-            if (Input.GetButtonDown("Respawn"))
+            if (canReset && Input.GetButtonDown("Respawn"))
             {
                 resetSpear();
             }
@@ -122,7 +125,6 @@ public class ThrowSpear : MonoBehaviour
 
             //Camera forward aim
             rb.AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
-
             //For Spawn in version
             
             //GameObject spear = Instantiate(spearObject, spearPos.position, transform.rotation);
