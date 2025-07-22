@@ -72,7 +72,7 @@ public class ThrowSpear : MonoBehaviour
             {
                 if (isAiming && !isThrown)
                 {
-                    //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                    UnityEngine.Cursor.lockState = CursorLockMode.Locked;
                     //UnityEngine.Cursor.lockState = CursorLockMode.None;
 
 

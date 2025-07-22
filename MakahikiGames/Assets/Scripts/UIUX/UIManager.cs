@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -9,8 +11,12 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ammoLeft;
     public TextMeshProUGUI TestWinScreen;
     public RawImage[] SpearsLeft;
+    public TextMeshProUGUI WindDirection;
     public ThrowSpear throwSpear;
     public bool isPractice;
+    public bool isAiming;
+    [SerializeField] private InputActionReference aimAction;
+
 
     public void Start()
     {
@@ -53,6 +59,19 @@ public class UIManager : MonoBehaviour
         if (Win)
         {
             TestWinScreen.enabled = true;
+        }
+    }
+    void Update()
+    {
+        isAiming = aimAction.action.IsPressed(); 
+
+        if (isAiming)
+        {
+            WindDirection.enabled = false;
+        }
+        else
+        {
+            WindDirection.enabled = true;
         }
     }
 }
