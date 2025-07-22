@@ -7,6 +7,7 @@ TagManager:
   - BananTree
   - SpearHoldBox
   - Out
+  - Wind
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - BanaTree
-  - 
+  - Ground
   - 
   - 
   - 
