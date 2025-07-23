@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class wind : MonoBehaviour
 {
@@ -11,8 +12,12 @@ public class wind : MonoBehaviour
     public float xv = -90f;
     public float yv = 0;
     public float zv = 90;
+    [SerializeField] private InputActionReference aimAction;
+    public bool isThrown;
+
     void Start()
     {
+        isThrown = false;
         rb = GetComponent<Rigidbody>();
         if (windSpeed <= 1)
         {
@@ -33,6 +38,19 @@ public class wind : MonoBehaviour
         if (windSpeed > 10)
         {
             windSpeed = 10;
+        }
+    }
+
+    void Update()
+    {
+        bool isAiming = aimAction.action.IsPressed();
+        if (isAiming || isThrown)
+        {
+            WindArrow.SetActive(false);
+        }
+        else
+        {
+            WindArrow.SetActive(true);
         }
     }
 
@@ -69,7 +87,7 @@ public class wind : MonoBehaviour
         if (horizontalWindDir.magnitude > 0 && windDir.x < 0 && windDir.z < 0)
         {
             // Calculate the target rotation to align the object’s forward with the wind direction horizontally
-            Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv-180, yv, zv+180+180);
+            Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv - 180, yv, zv + 180 + 180);
             WindArrow.transform.rotation = targetRotation;
         }
     }

@@ -8,6 +8,8 @@ public class SceneSelect : MonoBehaviour
         if (!string.IsNullOrEmpty(sceneName))
         {
             SceneManager.LoadScene(sceneName);
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+
         }
         else
         {

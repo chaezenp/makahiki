@@ -35,6 +35,7 @@ public class ThrowSpear : MonoBehaviour
     public SpearCollision spearCollision;
     public UIManager uiManager;
     public CameraSwitch CameraSwitch;
+    public wind wind;
     [SerializeField] private InputActionReference aimAction;
     [SerializeField] private InputActionReference chargeAction;
     public int ammoRemaining = 0;
@@ -73,7 +74,6 @@ public class ThrowSpear : MonoBehaviour
                 if (isAiming && !isThrown)
                 {
                     UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-                    //UnityEngine.Cursor.lockState = CursorLockMode.None;
 
 
                     spear.transform.rotation = Quaternion.LookRotation(Maincam.transform.forward) * Quaternion.Euler(90, 0, 0);
@@ -91,6 +91,7 @@ public class ThrowSpear : MonoBehaviour
                         readyThrow = false;
                         isThrown = true;
                         spearCollision.isThrown = isThrown;
+                        wind.isThrown = isThrown;
                         ammoRemaining--;
                         uiManager.ammoRemaining(ammoRemaining);
                         //drawArc.isThrown = isThrown;
