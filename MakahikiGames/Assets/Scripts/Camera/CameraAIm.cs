@@ -6,6 +6,8 @@ public class CameraAim : MonoBehaviour
 {
     [SerializeField] private PlayerInputHandler inputHandler;
     public bool isAiming = false;
+    public bool isInputEnabled = true;
+
 
     private void OnEnable()
     {
@@ -28,6 +30,7 @@ public class CameraAim : MonoBehaviour
 
     private void HandleLook(Vector2 input)
     {
+        if (!isInputEnabled) return;
         var device = Mouse.current != null && Mouse.current.delta.ReadValue() != Vector2.zero
             ? Mouse.current
             : (InputDevice)Gamepad.current;

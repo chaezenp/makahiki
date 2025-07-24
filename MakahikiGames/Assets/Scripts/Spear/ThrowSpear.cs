@@ -56,6 +56,7 @@ public class ThrowSpear : MonoBehaviour
             Debug.Log("NOT PRACTICE MODE");
             ammoRemaining = maxAmmo;
         }
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
     }
 
@@ -65,7 +66,7 @@ public class ThrowSpear : MonoBehaviour
             isAiming = aimAction.action.IsPressed(); 
             isCharging = chargeAction.action.IsPressed();
             canReset = spearCollision.canReset;
-
+            
 
         if (!isWin)
         {
@@ -73,7 +74,6 @@ public class ThrowSpear : MonoBehaviour
             {
                 if (isAiming && !isThrown)
                 {
-                    UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
 
                     spear.transform.rotation = Quaternion.LookRotation(Maincam.transform.forward) * Quaternion.Euler(90, 0, 0);
@@ -167,6 +167,8 @@ public class ThrowSpear : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
             spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
             isThrown = false;
+            wind.isThrown = isThrown;
+
            //drawArc.isThrown = isThrown;
             Debug.Log("resetSpear");
         }

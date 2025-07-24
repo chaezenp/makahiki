@@ -14,6 +14,8 @@ public class wind : MonoBehaviour
     public float zv = 90;
     [SerializeField] private InputActionReference aimAction;
     public bool isThrown;
+    public bool isPaused = false;
+    public MenuManager menuManager;
 
     void Start()
     {
@@ -44,6 +46,7 @@ public class wind : MonoBehaviour
     void Update()
     {
         bool isAiming = aimAction.action.IsPressed();
+        isPaused = menuManager.isPaused;
         if (isAiming || isThrown)
         {
             WindArrow.SetActive(false);
@@ -56,39 +59,42 @@ public class wind : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 flatWind = new Vector3(windDir.x, 0f, windDir.z).normalized;
-        if (inAir)
+        if (!isPaused)
         {
-            rb.AddForce(flatWind.normalized * windSpeed, ForceMode.Force);
-        }
-        //Temp arrow for direction
-        Vector3 horizontalWindDir = new Vector3(windDir.x, 0, windDir.z).normalized;
+            Vector3 flatWind = new Vector3(windDir.x, 0f, windDir.z).normalized;
+            if (inAir)
+            {
+                rb.AddForce(flatWind.normalized * windSpeed, ForceMode.Force);
+            }
+            //Temp arrow for direction
+            Vector3 horizontalWindDir = new Vector3(windDir.x, 0, windDir.z).normalized;
 
 
-        // If the wind direction has no horizontal component (e.g., vertical wind), do nothing
-        if (horizontalWindDir.magnitude > 0 && windDir.x > 0 && windDir.z > 0)
-        {
-            // Calculate the target rotation to align the object’s forward with the wind direction horizontally
-            Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv, yv, zv);
-            WindArrow.transform.rotation = targetRotation;
-        }
-        if (horizontalWindDir.magnitude > 0 && windDir.x < 0)
-        {
-            // Calculate the target rotation to align the object’s forward with the wind direction horizontally
-            Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv, yv + 180, zv + 180);
-            WindArrow.transform.rotation = targetRotation;
-        }
-        if (horizontalWindDir.magnitude > 0 && windDir.z < 0)
-        {
-            // Calculate the target rotation to align the object’s forward with the wind direction horizontally
-            Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(-1 * xv, yv, zv);
-            WindArrow.transform.rotation = targetRotation;
-        }
-        if (horizontalWindDir.magnitude > 0 && windDir.x < 0 && windDir.z < 0)
-        {
-            // Calculate the target rotation to align the object’s forward with the wind direction horizontally
-            Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv - 180, yv, zv + 180 + 180);
-            WindArrow.transform.rotation = targetRotation;
+            // If the wind direction has no horizontal component (e.g., vertical wind), do nothing
+            if (horizontalWindDir.magnitude > 0 && windDir.x > 0 && windDir.z > 0)
+            {
+                // Calculate the target rotation to align the object’s forward with the wind direction horizontally
+                Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv, yv, zv);
+                WindArrow.transform.rotation = targetRotation;
+            }
+            if (horizontalWindDir.magnitude > 0 && windDir.x < 0)
+            {
+                // Calculate the target rotation to align the object’s forward with the wind direction horizontally
+                Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv, yv + 180, zv + 180);
+                WindArrow.transform.rotation = targetRotation;
+            }
+            if (horizontalWindDir.magnitude > 0 && windDir.z < 0)
+            {
+                // Calculate the target rotation to align the object’s forward with the wind direction horizontally
+                Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(-1 * xv, yv, zv);
+                WindArrow.transform.rotation = targetRotation;
+            }
+            if (horizontalWindDir.magnitude > 0 && windDir.x < 0 && windDir.z < 0)
+            {
+                // Calculate the target rotation to align the object’s forward with the wind direction horizontally
+                Quaternion targetRotation = Quaternion.LookRotation(horizontalWindDir, Vector3.back) * Quaternion.Euler(xv - 180, yv, zv + 180 + 180);
+                WindArrow.transform.rotation = targetRotation;
+            }
         }
     }
 

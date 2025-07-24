@@ -111,7 +111,6 @@ public class ScoreSystem : MonoBehaviour
                 timer = 0;
                 waitime = savedWait;
                 SceneManager.LoadScene(nextScene);
-
             }
         }
         spearTip = spearHead.transform.position;
