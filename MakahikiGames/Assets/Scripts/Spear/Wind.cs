@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,7 +16,7 @@ public class wind : MonoBehaviour
     [SerializeField] private InputActionReference aimAction;
     public bool isThrown;
     public bool isPaused = false;
-    public MenuManager menuManager;
+    public TextMeshProUGUI windLevel;
 
     void Start()
     {
@@ -24,18 +25,22 @@ public class wind : MonoBehaviour
         if (windSpeed <= 1)
         {
             Debug.Log("Light Breeze");
+            windLevel.text = "Light Breeze";
         }
         if (windSpeed <= 3 && windSpeed >= 2)
         {
             Debug.Log("Moderate Wind");
+            windLevel.text = "Moderate Wind";
         }
         if (windSpeed <= 5 && windSpeed >= 4)
         {
             Debug.Log("Strong Wind");
+            windLevel.text = "Strong Wind";
         }
-        if (windSpeed >= 6)
+        if (windSpeed <= 7 && windSpeed >= 6)
         {
-            Debug.Log("Extreme Winds");
+            Debug.Log("Strong Wind");
+            windLevel.text = "Strong Wind";
         }
         if (windSpeed > 10)
         {
@@ -46,7 +51,6 @@ public class wind : MonoBehaviour
     void Update()
     {
         bool isAiming = aimAction.action.IsPressed();
-        isPaused = menuManager.isPaused;
         if (isAiming || isThrown)
         {
             WindArrow.SetActive(false);
