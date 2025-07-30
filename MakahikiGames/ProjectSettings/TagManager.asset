@@ -8,6 +8,7 @@ TagManager:
   - SpearHoldBox
   - Out
   - Wind
+  - kanaka
   layers:
   - Default
   - TransparentFX
