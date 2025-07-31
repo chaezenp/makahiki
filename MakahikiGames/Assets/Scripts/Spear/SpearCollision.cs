@@ -102,7 +102,7 @@ public class SpearCollision : MonoBehaviour
             Debug.Log("Spear hit ground at: " + hitPoint);
             rb.constraints = RigidbodyConstraints.FreezeAll;
             Debug.DrawRay(hitPoint, Vector3.up * 2, Color.red, 5f); // Red marker lasts 5 sec
-
+            onGround = true;
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("BanaTree"))
         {

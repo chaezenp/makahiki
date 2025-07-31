@@ -9,6 +9,7 @@ TagManager:
   - Out
   - Wind
   - kanaka
+  - NextLevel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - BanaTree
   - Ground
   - Arrow
-  - 
+  - NextLevel
   - 
   - 
   - 

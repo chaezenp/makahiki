@@ -11,7 +11,7 @@ public class Billboard : MonoBehaviour
 
   private Vector3 originalRotation;
 
-  public enum BillboardType { LookAtCamera, CameraForward };
+  public enum BillboardType { LookAtCamera, CameraForward, CameraBackward };
 
   private void Awake() {
     originalRotation = transform.rotation.eulerAngles;
@@ -26,6 +26,9 @@ public class Billboard : MonoBehaviour
         break;
       case BillboardType.CameraForward:
         transform.forward = -Camera.main.transform.forward;
+        break;
+      case BillboardType.CameraBackward:
+        transform.forward = Camera.main.transform.forward;
         break;
       default:
         break;

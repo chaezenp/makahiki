@@ -11,7 +11,9 @@ public class MenuManager : MonoBehaviour
     public GameObject firstButtonInOptions;
     public GameObject firstButtonInPauseMenu;
     public PlayerInputHandler playerInputHandler;
+    public FPPlayerInputHandler FPplayerInputHandler;
     public PlayerInputHandler overlayCameraInputHandler;
+    public FPMove fpMove;
 
     public static bool gameIsPaused = false; // Static variable to track pause state
 
@@ -45,8 +47,22 @@ public class MenuManager : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0f;
         PauseMenu.SetActive(true);
-        playerInputHandler.isInputEnabled = false;
-        overlayCameraInputHandler.isInputEnabled = false;
+        if (playerInputHandler != null)
+        {
+            playerInputHandler.isInputEnabled = false;
+        }
+        if (FPplayerInputHandler != null)
+        {
+            FPplayerInputHandler.isInputEnabled = false;
+        }
+        if (overlayCameraInputHandler != null)
+        {
+            overlayCameraInputHandler.isInputEnabled = false;
+        }
+        if (fpMove != null)
+        {
+            fpMove.isPaused = true;
+        }
     }
 
     public void ResumeGame()
@@ -55,8 +71,22 @@ public class MenuManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
-        playerInputHandler.isInputEnabled = true;
-        overlayCameraInputHandler.isInputEnabled = true;
+        if (playerInputHandler != null)
+        {
+            playerInputHandler.isInputEnabled = true;
+        }
+        if (FPplayerInputHandler != null)
+        {
+            FPplayerInputHandler.isInputEnabled = true;
+        }
+        if (overlayCameraInputHandler != null)
+        {
+            overlayCameraInputHandler.isInputEnabled = true;
+        }
+        if (fpMove != null)
+        {
+            fpMove.isPaused = false;
+        }
     }
 
     public void optionMenu()

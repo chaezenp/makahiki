@@ -26,6 +26,7 @@ public class FPMove : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private InputActionReference runAction;
     public bool isRun;
+    public bool isPaused;
 
     void Start()
     {
@@ -66,18 +67,21 @@ public class FPMove : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (isRun)
+        if (!isPaused)
         {
-            moveSpeed = sprintSpeed;
-        }
-        else
-        {
-            moveSpeed = walkspeed;
-        }
-        transform.rotation = orientation.rotation;
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+            if (isRun)
+            {
+                moveSpeed = sprintSpeed;
+            }
+            else
+            {
+                moveSpeed = walkspeed;
+            }
+            transform.rotation = orientation.rotation;
+            moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
     }
 
     void SpeedControl()

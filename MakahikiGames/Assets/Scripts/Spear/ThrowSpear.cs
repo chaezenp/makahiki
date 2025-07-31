@@ -34,6 +34,7 @@ public class ThrowSpear : MonoBehaviour
     public SpearUI SpearUI;
     public SpearCollision spearCollision;
     public UIManager uiManager;
+    public ScoreSystem pointSystem;
     public CameraSwitch CameraSwitch;
     public wind wind;
     [SerializeField] private InputActionReference aimAction;
@@ -94,6 +95,8 @@ public class ThrowSpear : MonoBehaviour
                         wind.isThrown = isThrown;
                         ammoRemaining--;
                         uiManager.ammoRemaining(ammoRemaining);
+                        pointSystem.ammoRemaining = ammoRemaining;
+                        pointSystem.isThrown = isThrown;
                         //drawArc.isThrown = isThrown;
 
                     }
@@ -168,12 +171,14 @@ public class ThrowSpear : MonoBehaviour
             spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
             isThrown = false;
             wind.isThrown = isThrown;
+            pointSystem.isThrown = isThrown;
 
            //drawArc.isThrown = isThrown;
             Debug.Log("resetSpear");
         }
             if (ammoRemaining == 0 && !isPracticeMode)
             {
+                pointSystem.isThrown = false;
                 Debug.Log("No More Ammo");
             }
     }

@@ -8,34 +8,45 @@ interface IInteractable
 public class Interact : MonoBehaviour
 {
     [SerializeField] private InputActionReference interactAction;
-    public bool Talk = false;
+    public bool interact = false;
     public bool isTalking = false;
     public Transform InteractionSource;
     public float InteractRange;
+    public bool isPaused = false;
 
 
     // Update is called once per frame
     void Update()
     {
-        Talk = interactAction.action.IsPressed();
-
-        if (Talk && !isTalking)
+        interact = interactAction.action.IsPressed();
+        if (Time.timeScale == 0f)
         {
-            Ray r = new Ray(InteractionSource.position, InteractionSource.forward);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+            isPaused = true;
+        }
+        else
+        {
+            isPaused = false;
+        }
+        if (!isPaused)
+        {
+            if (interact && !isTalking)
             {
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                Ray r = new Ray(InteractionSource.position, InteractionSource.forward);
+                if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
                 {
-                    isTalking = true;
-                    interactObj.Interact();
+                    if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                    {
+                        isTalking = true;
+                        interactObj.Interact();
+                    }
                 }
             }
-        }
-        if (Time.timeScale > 0f)
-        {
-            isTalking = false;
-        }
+            if (Time.timeScale > 0f)
+            {
+                isTalking = false;
+            }
 
+        }
     }
 
 }

@@ -16,13 +16,22 @@ public class wind : MonoBehaviour
     [SerializeField] private InputActionReference aimAction;
     public bool isThrown;
     public bool isPaused = false;
+    public bool noWind = false;
     public TextMeshProUGUI windLevel;
+    public GameObject disableWindText;
 
     void Start()
     {
         isThrown = false;
         rb = GetComponent<Rigidbody>();
-        if (windSpeed <= 1)
+        if (windSpeed == 0)
+        {
+            Debug.Log("No Wind");
+            noWind = true;
+            disableWindText.SetActive(false);
+            WindArrow.SetActive(false);
+        }
+        if (windSpeed <= 1 && windSpeed != 0)
         {
             Debug.Log("Light Breeze");
             windLevel.text = "Light Breeze";
@@ -51,13 +60,18 @@ public class wind : MonoBehaviour
     void Update()
     {
         bool isAiming = aimAction.action.IsPressed();
-        if (isAiming || isThrown)
+        if (!noWind)
         {
-            WindArrow.SetActive(false);
-        }
-        else
-        {
-            WindArrow.SetActive(true);
+            if (isAiming || isThrown)
+            {
+                WindArrow.SetActive(false);
+                disableWindText.SetActive(false);
+            }
+            else
+            {
+                WindArrow.SetActive(true);
+                disableWindText.SetActive(true);
+            }
         }
     }
 

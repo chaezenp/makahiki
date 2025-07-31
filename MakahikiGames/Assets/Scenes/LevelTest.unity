@@ -511,7 +511,6 @@ MonoBehaviour:
   - {fileID: 1237071866}
   - {fileID: 84484260}
   - {fileID: 428268959}
-  WindDirection: {fileID: 88948972}
   throwSpear: {fileID: 1589946899}
   isPractice: 0
   isAiming: 0
@@ -2774,10 +2773,9 @@ GameObject:
   - component: {fileID: 1623538612}
   - component: {fileID: 1623538615}
   - component: {fileID: 1623538614}
-  - component: {fileID: 1623538613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tree (2)
-  m_TagString: Untagged
+  m_TagString: BananTree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2797,28 +2795,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267552405}
   m_LocalEulerAnglesHint: {x: 89.972, y: 0, z: -141.186}
---- !u!64 &1623538613
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623538611}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1623538614
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3246,10 +3222,9 @@ GameObject:
   - component: {fileID: 1781407328}
   - component: {fileID: 1781407331}
   - component: {fileID: 1781407330}
-  - component: {fileID: 1781407329}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tree (3)
-  m_TagString: Untagged
+  m_TagString: BananTree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3269,28 +3244,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267552405}
   m_LocalEulerAnglesHint: {x: -96.375, y: -17.399994, z: -141.031}
---- !u!64 &1781407329
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781407327}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1781407330
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3605,6 +3558,10 @@ PrefabInstance:
       propertyPath: menuManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: disableWindText
+      value: 
+      objectReference: {fileID: 88948970}
     - target: {fileID: 3268110068884837704, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: spearTip
       value: 

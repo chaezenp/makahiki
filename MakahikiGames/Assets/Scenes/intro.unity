@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeLoad: 11
-  nextSceneName: "\u02BBO\u02BBo ihe"
+  nextSceneName: TalkArea
 --- !u!4 &1059256430
 Transform:
   m_ObjectHideFlags: 0
