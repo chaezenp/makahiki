@@ -7,6 +7,8 @@ public class PlayerInputHandler : MonoBehaviour
     public float mouseSensitivity = 0.2f;
     public float gamepadSensitivity = 3f;
     public float verticalLookLimit = 90f;
+    public bool isInputEnabled = true;
+
     private float rotationX = 0f;
     private float rotationY = 0f;
 
@@ -31,6 +33,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnLookPerformed(InputAction.CallbackContext context)
     {
+        if (!isInputEnabled) return;
+
         Vector2 lookInput = context.ReadValue<Vector2>();
 //        Debug.Log("Look Input: " + lookInput); // 👈 add this
         OnLookInput?.Invoke(lookInput);

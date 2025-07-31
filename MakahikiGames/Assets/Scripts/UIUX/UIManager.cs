@@ -10,8 +10,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI BeatThisText;
     public TextMeshProUGUI ammoLeft;
     public TextMeshProUGUI TestWinScreen;
+    public TextMeshProUGUI TestLoseScreen;
     public RawImage[] SpearsLeft;
-    public TextMeshProUGUI WindDirection;
     public ThrowSpear throwSpear;
     public bool isPractice;
     public bool isAiming;
@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public void Start()
     {
         TestWinScreen.enabled = false;
+        TestLoseScreen.enabled = false;
         isPractice = throwSpear.isPracticeMode;
         if (isPractice)
         {
@@ -61,17 +62,11 @@ public class UIManager : MonoBehaviour
             TestWinScreen.enabled = true;
         }
     }
-    void Update()
+        public void YouLose(bool lose)
     {
-        isAiming = aimAction.action.IsPressed(); 
-
-        if (isAiming)
+        if (lose)
         {
-            WindDirection.enabled = false;
-        }
-        else
-        {
-            WindDirection.enabled = true;
+            TestLoseScreen.enabled = true;
         }
     }
 }

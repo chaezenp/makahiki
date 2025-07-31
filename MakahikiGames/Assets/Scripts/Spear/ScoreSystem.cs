@@ -15,7 +15,8 @@ public class ScoreSystem : MonoBehaviour
     public GameObject spearHead;
 
     public int scoreToBeat = 5;
-    public string nextScene;
+    public string secondArea;
+    public string firstArea;
     public bool isPractice;
     private bool timerOn;
     public int waitime = 5;
@@ -27,6 +28,10 @@ public class ScoreSystem : MonoBehaviour
     public float threePt = 3f;
     public float twoPt = 4f;
     public float onePt = 5f;
+    public bool isWin = false;
+    public bool isLose = false;
+    public float ammoRemaining;
+    public bool isThrown;
 
     void Start()
     {
@@ -34,6 +39,8 @@ public class ScoreSystem : MonoBehaviour
         timerOn = false;
         savedWait = waitime;
         isPractice = throwSpear.isPracticeMode;
+        ammoRemaining = throwSpear.ammoRemaining;
+        Debug.Log("start: "+ ammoRemaining);
     }
 
     public void Hit(Vector3 impactPoint)
@@ -72,16 +79,21 @@ public class ScoreSystem : MonoBehaviour
         }
 
         Debug.Log(score);
+
     }
     void AddScore(int points)
     {
         score += points;
         uiManager.UpdateScore(score); // Call the UpdateScore method
-        if (score >= scoreToBeat && !isPractice)
+        if (!isPractice)
         {
-            uiManager.YouWin(true);
-            throwSpear.isWin = true;
-            timerOn = true;
+            if (score >= scoreToBeat)
+            {
+                uiManager.YouWin(true);
+                throwSpear.isWin = true;
+                isWin = true;
+                timerOn = true;
+            }
         }
     }
     public void OnDrawGizmos()
@@ -101,6 +113,13 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
+        if (score < scoreToBeat && ammoRemaining == 0 && !isThrown)
+        {
+            uiManager.YouLose(true);
+            throwSpear.isWin = true;
+            isLose = true;
+            timerOn = true;
+        }
         if (timerOn)
         {
             timer += Time.deltaTime;
@@ -110,8 +129,14 @@ public class ScoreSystem : MonoBehaviour
                 timerOn = false;
                 timer = 0;
                 waitime = savedWait;
-                SceneManager.LoadScene(nextScene);
-
+                if (isWin)
+                {
+                    SceneManager.LoadScene(secondArea);
+                }
+                if (isLose)
+                {
+                    SceneManager.LoadScene(firstArea);
+                }
             }
         }
         spearTip = spearHead.transform.position;
