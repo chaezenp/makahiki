@@ -1698,11 +1698,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &859234954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3995066503071621195, guid: 5db96f876f629e844abbe3ab3c73086f, type: 3}
-  m_PrefabInstance: {fileID: 1538825794}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &859234955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7266228703137209448, guid: 5db96f876f629e844abbe3ab3c73086f, type: 3}
@@ -1718,7 +1713,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4957927075938684638, guid: 5db96f876f629e844abbe3ab3c73086f, type: 3}
   m_PrefabInstance: {fileID: 1538825794}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859234954}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 868ba979749c2a44aa9623ae2f79f9e7, type: 3}
@@ -3370,17 +3365,41 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: xv
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: yv
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: zv
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: WindArrow
       value: 
-      objectReference: {fileID: 859234954}
+      objectReference: {fileID: 2115431731}
     - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: aimAction
       value: 
       objectReference: {fileID: 2081839521796053632, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: windDir.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: windDir.z
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: windLevel
       value: 
       objectReference: {fileID: 402423731}
+    - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
+      propertyPath: windSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: disableWindText
       value: 
@@ -4879,6 +4898,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1853957574}
   m_SourcePrefab: {fileID: 100100000, guid: 250083a6cfc931b4caca769897000d73, type: 3}
+--- !u!1 &2115431731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4169851021659467980, guid: 5db96f876f629e844abbe3ab3c73086f, type: 3}
+  m_PrefabInstance: {fileID: 1538825794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2943921395014359645
 PrefabInstance:
   m_ObjectHideFlags: 0

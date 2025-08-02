@@ -113,7 +113,7 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
-        if (score < scoreToBeat && ammoRemaining == 0 && !isThrown)
+        if (score < scoreToBeat && ammoRemaining == 0 && !isThrown && !isPractice)
         {
             uiManager.YouLose(true);
             throwSpear.isWin = true;
