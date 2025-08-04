@@ -113,7 +113,7 @@ public class ThrowSpear : MonoBehaviour
         {
             Debug.Log("WINNER");
             CameraSwitch.CamReset();
-
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
         }
     }
     void Throw()

@@ -36,7 +36,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (!isInputEnabled) return;
 
         Vector2 lookInput = context.ReadValue<Vector2>();
-//        Debug.Log("Look Input: " + lookInput); // 👈 add this
+//        Debug.Log("Look Input: " + lookInput);
         OnLookInput?.Invoke(lookInput);
     }
 
