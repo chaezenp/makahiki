@@ -1,10 +1,12 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Talkto2People : MonoBehaviour, IInteractable
 {
     public GameObject dialogueBox;
+    public MenuManager menuManager;
     public GameObject[] dialogueText;
     public GameObject[] Names;
     public bool interact;
@@ -27,6 +29,8 @@ public class Talkto2People : MonoBehaviour, IInteractable
         Names[nextText +1].SetActive(false);
 
         isInteract = true;
+        menuManager.inDialogue = true;
+
         Debug.Log("Start Dialogue");
     }
     public void Update()

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class TalktoPeople : MonoBehaviour, IInteractable
 {
     public GameObject dialogueBox;
+    public MenuManager menuManager;
     public GameObject[] dialogueText;
     public bool interact;
     public bool next;
@@ -23,6 +24,7 @@ public class TalktoPeople : MonoBehaviour, IInteractable
         dialogueBox.SetActive(true);
         dialogueText[nextText].SetActive(true);
         isInteract = true;
+        menuManager.inDialogue = true;
         Debug.Log("Start Dialogue");
     }
     public void Update()
@@ -49,6 +51,7 @@ public class TalktoPeople : MonoBehaviour, IInteractable
                 {
                     Debug.Log("End of Dialogue");
                     isInteract = false;
+                    menuManager.inDialogue = false;
                     dialogueBox.SetActive(false);
                     Time.timeScale = 1;
                     nextText = 0;
