@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     public FPPlayerInputHandler FPplayerInputHandler;
     public PlayerInputHandler overlayCameraInputHandler;
     public FPMove fpMove;
+    public bool inDialogue;
 
     public static bool gameIsPaused = false; // Static variable to track pause state
 
@@ -23,21 +24,25 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         PauseMenu.SetActive(false);
+        inDialogue = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (!inDialogue)
         {
-            if (isPaused)
+            if (Input.GetButtonDown("Pause"))
             {
-                optionBack();
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
+                if (isPaused)
+                {
+                    optionBack();
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
         }
     }

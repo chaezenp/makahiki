@@ -112,11 +112,18 @@ public class SpearCollision : MonoBehaviour
             Vector3 contactNormal = -contact.normal;
             float dot = Vector3.Dot(spearForward, contactNormal);
 
-            if (dot > 0.85f) // Only stick if tip hits target
+            float hitangleThreshold = 0.85f;
+
+            if (dot > hitangleThreshold) // Only stick if tip hits target
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 scoreSystem.Hit(contact.point);
 
+            }
+            else
+            {
+                rb.linearVelocity = rb.linearVelocity * 0.1f;
+                rb.angularVelocity = Vector3.zero;
             }
 
             // Speed based embed

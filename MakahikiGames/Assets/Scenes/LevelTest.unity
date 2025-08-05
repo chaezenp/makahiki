@@ -3698,7 +3698,7 @@ PrefabInstance:
       objectReference: {fileID: 88948972}
     - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: windSpeed
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3101339380126522347, guid: a2f915d11f489cd4eba51cc1f992075f, type: 3}
       propertyPath: menuManager
