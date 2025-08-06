@@ -25,6 +25,8 @@ public class SpearCollision : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        spearHead = transform.Find("SpearHead(ForTarget)");
+        LinePoint = GameObject.Find("Linepoint");
         onGround = false;
         isThrown = false;
         timerOn = false;
@@ -35,22 +37,25 @@ public class SpearCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TheLine = LinePoint.transform.position;
-        if (onGround || timerOn)
+        if (LinePoint != null)
         {
-            timer += Time.deltaTime;
-            seconds = (int)(timer % 60);
-            if (seconds > waitime)
-            {
-                CameraSwitch.CamReset();
-                //NextSpear.Next();
-                timerOn = false;
-                onGround = false;
-                canReset = true;
-                timer = 0;
-                waitime = savedWait;
-            }
+            TheLine = LinePoint.transform.position;
         }
+        if (onGround || timerOn)
+            {
+                timer += Time.deltaTime;
+                seconds = (int)(timer % 60);
+                if (seconds > waitime)
+                {
+                    CameraSwitch.CamReset();
+                    //NextSpear.Next();
+                    timerOn = false;
+                    onGround = false;
+                    canReset = true;
+                    timer = 0;
+                    waitime = savedWait;
+                }
+            }
     }
 
     void FixedUpdate()

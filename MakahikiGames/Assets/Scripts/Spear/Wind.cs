@@ -7,7 +7,7 @@ public class wind : MonoBehaviour
 {
     public float windSpeed = 0f;
     public Vector3 windDir = new Vector3(1f, 0f, 0f);
-    private Rigidbody rb;
+    public Rigidbody nrb;
     private bool inAir = false;
     public GameObject WindArrow;
     public float xv = -90f;
@@ -23,7 +23,7 @@ public class wind : MonoBehaviour
     void Start()
     {
         isThrown = false;
-        rb = GetComponent<Rigidbody>();
+        //nrb = GetComponent<Rigidbody>();
         if (windSpeed == 0)
         {
             Debug.Log("No Wind");
@@ -82,7 +82,7 @@ public class wind : MonoBehaviour
             Vector3 flatWind = new Vector3(windDir.x, 0f, windDir.z).normalized;
             if (inAir)
             {
-                rb.AddForce(flatWind.normalized * windSpeed, ForceMode.Force);
+                nrb.AddForce(flatWind.normalized * windSpeed, ForceMode.Force);
             }
             //Temp arrow for direction
             Vector3 horizontalWindDir = new Vector3(windDir.x, 0, windDir.z).normalized;
@@ -120,7 +120,7 @@ public class wind : MonoBehaviour
     {
         if (other.CompareTag("SpearHoldBox"))
         {
-            if (rb != null)
+            if (nrb != null)
             {
                 inAir = true;
             }

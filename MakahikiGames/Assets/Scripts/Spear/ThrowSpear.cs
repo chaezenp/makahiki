@@ -7,8 +7,7 @@ using UnityEngine.Rendering;
 
 public class ThrowSpear : MonoBehaviour
 {
-[SerializeField] private GameObject spearObject;
-
+    [SerializeField] private GameObject spearObject;
     public bool isPracticeMode = true;
     public GameObject spear;
     public Rigidbody rb;
@@ -41,6 +40,10 @@ public class ThrowSpear : MonoBehaviour
     [SerializeField] private InputActionReference chargeAction;
     public int ammoRemaining = 0;
     public int maxAmmo = 3;
+    private GameObject newSpear;
+    private SpearCollision nspear;
+    private Rigidbody currentSpearRb;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,7 +61,21 @@ public class ThrowSpear : MonoBehaviour
             ammoRemaining = maxAmmo;
         }
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        SpawnSpear();
+    }
 
+    void SpawnSpear()
+    {
+        newSpear = Instantiate(spearObject, spearPos.position, transform.rotation);
+        newSpear.transform.rotation = Quaternion.LookRotation(Maincam.transform.forward) * Quaternion.Euler(90, 0, 0);
+        nspear = newSpear.GetComponent<SpearCollision>();
+        nspear.scoreSystem = pointSystem;
+        nspear.CameraSwitch = CameraSwitch;
+        currentSpearRb = newSpear.GetComponent<Rigidbody>();
+        currentSpearRb.constraints = RigidbodyConstraints.FreezeAll;
+        wind.nrb = currentSpearRb;
+        Camera playerCamera = newSpear.GetComponentInChildren<Camera>();
+        CameraSwitch.SetTargetCamera(playerCamera);
     }
 
     // Update is called once per frame
@@ -66,7 +83,7 @@ public class ThrowSpear : MonoBehaviour
     {
             isAiming = aimAction.action.IsPressed(); 
             isCharging = chargeAction.action.IsPressed();
-            canReset = spearCollision.canReset;
+            canReset = nspear.canReset;
             
 
         if (!isWin)
@@ -77,14 +94,14 @@ public class ThrowSpear : MonoBehaviour
                 {
 
 
-                    spear.transform.rotation = Quaternion.LookRotation(Maincam.transform.forward) * Quaternion.Euler(90, 0, 0);
+                    newSpear.transform.rotation = Quaternion.LookRotation(Maincam.transform.forward) * Quaternion.Euler(90, 0, 0);
                     if (isCharging)
                     {
                         chargeSpear();
                     }
                     if (!isCharging && readyThrow)
                     {
-                        rb.constraints = RigidbodyConstraints.None;
+                        currentSpearRb.constraints = RigidbodyConstraints.None;
                         Throw();
                         timer = 0f;
                         strength = 0f;
@@ -120,7 +137,7 @@ public class ThrowSpear : MonoBehaviour
     {
         isMoving = true;
 
-        if (rb != null)
+        if (currentSpearRb != null)
         {
             // center of screen aim
             // Vector3 aimDir = Maincam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2)).direction;
@@ -128,11 +145,15 @@ public class ThrowSpear : MonoBehaviour
             // rb.AddForce(aimDir.normalized * strength, ForceMode.Impulse);
 
             //Camera forward aim
-            rb.AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
+            //rb.AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
             //For Spawn in version
-            
+
             //GameObject spear = Instantiate(spearObject, spearPos.position, transform.rotation);
             //spear.GetComponent<Rigidbody>().AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
+
+            newSpear.GetComponent<Rigidbody>().AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
+
+
         }
     }
 
@@ -163,16 +184,17 @@ public class ThrowSpear : MonoBehaviour
 
     void resetSpear()
     {
-
+        currentSpearRb.Sleep();
         if (isPracticeMode || (ammoRemaining < maxAmmo && ammoRemaining > 0 && !isPracticeMode))
         {
             spear.transform.position = startPos;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            currentSpearRb.constraints = RigidbodyConstraints.FreezeAll;
             spear.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
             isThrown = false;
             wind.isThrown = isThrown;
             pointSystem.isThrown = isThrown;
-
+            Destroy(newSpear);
+            SpawnSpear();
            //drawArc.isThrown = isThrown;
             Debug.Log("resetSpear");
         }
