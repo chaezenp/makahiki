@@ -7743,6 +7743,7 @@ GameObject:
   - component: {fileID: 609944922}
   - component: {fileID: 609944921}
   - component: {fileID: 609944920}
+  - component: {fileID: 609944923}
   m_Layer: 9
   m_Name: Level1Trigger
   m_TagString: NextLevel
@@ -7794,6 +7795,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &609944923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609944919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cdb4ea727e8cf459d1b016ed697512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelProgress: {fileID: 11400000, guid: 1bf89a64b8319844488b8b222fd24d96, type: 2}
+  defaultTargetLevel: Level1
 --- !u!4 &614578521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086679688613353623, guid: 010bcf754a43f2f43be9d81696558da8, type: 3}
@@ -9316,7 +9331,6 @@ GameObject:
   - component: {fileID: 785852133}
   - component: {fileID: 785852135}
   - component: {fileID: 785852136}
-  - component: {fileID: 785852137}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9413,19 +9427,6 @@ MonoBehaviour:
   InteractionSource: {fileID: 868394811}
   InteractRange: 6
   isPaused: 0
---- !u!114 &785852137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785852132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6edc13042dd1bfb4aa78ebe2f2b6e907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextLevel: Level1
 --- !u!1 &793988848 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1966078610678228395, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
@@ -16725,6 +16726,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5226445898133356283, guid: d09ee46368ae3914dba73d52bdfd9816, type: 3}
   m_PrefabInstance: {fileID: 1997370941}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1498207038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498207040}
+  - component: {fileID: 1498207039}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1498207039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498207038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cdb4ea727e8cf459d1b016ed697512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelProgress: {fileID: 11400000, guid: 1bf89a64b8319844488b8b222fd24d96, type: 2}
+  defaultTargetLevel: Level1Scene
+--- !u!4 &1498207040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498207038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.364548, y: -3.0903955, z: -1.2539345}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1499766431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17291,7 +17338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1524485968}
   m_Layer: 0
-  m_Name: Level1Indicator
+  m_Name: LevelIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17755,6 +17802,7 @@ GameObject:
   - component: {fileID: 1575513332}
   - component: {fileID: 1575513334}
   - component: {fileID: 1575513333}
+  - component: {fileID: 1575513335}
   m_Layer: 0
   m_Name: Level1Text
   m_TagString: kanaka
@@ -17848,6 +17896,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1575513335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575513331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cd9feccb04f2c45b8fa926418b6ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelProgress: {fileID: 11400000, guid: 1bf89a64b8319844488b8b222fd24d96, type: 2}
+  Level1: Level1
+  Level2: Level 2
+  Level3: Level 3
+  Level1Sprite: {fileID: 21300000, guid: 2264ee678467651429f17aa9bd314af3, type: 3}
+  Level2Sprite: {fileID: 21300000, guid: acb5e7f4b9221cd41b7b82c65d817a22, type: 3}
+  Level3Sprite: {fileID: 0}
 --- !u!4 &1585677941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086679688613353623, guid: 010bcf754a43f2f43be9d81696558da8, type: 3}
@@ -18572,10 +18639,6 @@ PrefabInstance:
     - target: {fileID: 5456440412062145541, guid: 47baf205955c346439e0727450d9bf83, type: 3}
       propertyPath: m_Name
       value: PersonPlaceHold
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456440412062145541, guid: 47baf205955c346439e0727450d9bf83, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5507593577170902735, guid: 47baf205955c346439e0727450d9bf83, type: 3}
       propertyPath: m_LocalScale.y
@@ -24649,3 +24712,4 @@ SceneRoots:
   - {fileID: 1972917655}
   - {fileID: 499777429}
   - {fileID: 91396022}
+  - {fileID: 1498207040}

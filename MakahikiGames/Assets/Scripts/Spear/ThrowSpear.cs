@@ -73,9 +73,24 @@ public class ThrowSpear : MonoBehaviour
         {
             if (!isMoving)
             {
+                if (!isAiming && strength > 0)
+                {
+                        rb.constraints = RigidbodyConstraints.None;
+                        Throw();
+                        timer = 0f;
+                        strength = 0f;
+                        isMoving = false;
+                        readyThrow = false;
+                        isThrown = true;
+                        spearCollision.isThrown = isThrown;
+                        wind.isThrown = isThrown;
+                        ammoRemaining--;
+                        uiManager.ammoRemaining(ammoRemaining);
+                        pointSystem.ammoRemaining = ammoRemaining;
+                        pointSystem.isThrown = isThrown;
+                }
                 if (isAiming && !isThrown)
                 {
-
 
                     spear.transform.rotation = Quaternion.LookRotation(Maincam.transform.forward) * Quaternion.Euler(90, 0, 0);
                     if (isCharging)
@@ -163,7 +178,7 @@ public class ThrowSpear : MonoBehaviour
 
     void resetSpear()
     {
-
+        rb.Sleep();
         if (isPracticeMode || (ammoRemaining < maxAmmo && ammoRemaining > 0 && !isPracticeMode))
         {
             spear.transform.position = startPos;

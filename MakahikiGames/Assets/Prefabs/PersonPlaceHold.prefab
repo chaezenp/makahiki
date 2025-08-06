@@ -230,11 +230,11 @@ GameObject:
   - component: {fileID: 6281895630521512491}
   m_Layer: 0
   m_Name: PersonPlaceHold
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5507593577170902735
 Transform:
   m_ObjectHideFlags: 0

@@ -3341,6 +3341,7 @@ MonoBehaviour:
   spear: {fileID: 1108460780}
   spearTip: {x: 0, y: 0, z: 0}
   spearHead: {fileID: 1725094724}
+  levelProgress: {fileID: 11400000, guid: 1bf89a64b8319844488b8b222fd24d96, type: 2}
   scoreToBeat: 6
   secondArea: level 2
   firstArea: TalkArea
@@ -3613,6 +3614,7 @@ MonoBehaviour:
   FPplayerInputHandler: {fileID: 0}
   overlayCameraInputHandler: {fileID: 859234962}
   fpMove: {fileID: 0}
+  inDialogue: 0
   isPaused: 0
 --- !u!4 &1150006709
 Transform:

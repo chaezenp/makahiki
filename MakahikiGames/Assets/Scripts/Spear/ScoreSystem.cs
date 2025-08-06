@@ -13,6 +13,7 @@ public class ScoreSystem : MonoBehaviour
     public GameObject spear;
     public Vector3 spearTip;
     public GameObject spearHead;
+    public LevelProgress levelProgress;
 
     public int scoreToBeat = 5;
     public string secondArea;
@@ -93,6 +94,8 @@ public class ScoreSystem : MonoBehaviour
                 throwSpear.isWin = true;
                 isWin = true;
                 timerOn = true;
+                string currentLevelName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                levelProgress.SetLevelWon(currentLevelName);
             }
         }
     }

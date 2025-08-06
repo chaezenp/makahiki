@@ -382,6 +382,7 @@ MonoBehaviour:
   timerOn: 0
   waitime: 3
   savedWait: 0
+  canReset: 0
 --- !u!114 &3101339380126522347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +397,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windSpeed: 0
   windDir: {x: 1, y: 0, z: 0}
+  WindArrow: {fileID: 0}
+  xv: -180
+  yv: 90
+  zv: 0
+  aimAction: {fileID: 0}
+  isThrown: 0
+  isPaused: 0
+  noWind: 0
+  windLevel: {fileID: 0}
+  disableWindText: {fileID: 0}
 --- !u!1 &6883192287725958248
 GameObject:
   m_ObjectHideFlags: 0

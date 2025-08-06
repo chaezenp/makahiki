@@ -1667,6 +1667,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: makahiki.lvl2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9fd6bc26f665d841b6f4f1c8d7dd55a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9fd6bc26f665d841b6f4f1c8d7dd55a, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3118,6 +3126,7 @@ MonoBehaviour:
   spear: {fileID: 1108460780}
   spearTip: {x: 0, y: 0, z: 0}
   spearHead: {fileID: 1725094724}
+  levelProgress: {fileID: 11400000, guid: 1bf89a64b8319844488b8b222fd24d96, type: 2}
   scoreToBeat: 6
   secondArea: menu
   firstArea: TalkArea
@@ -3390,6 +3399,7 @@ MonoBehaviour:
   FPplayerInputHandler: {fileID: 0}
   overlayCameraInputHandler: {fileID: 859234962}
   fpMove: {fileID: 0}
+  inDialogue: 0
   isPaused: 0
 --- !u!4 &1150006709
 Transform:
