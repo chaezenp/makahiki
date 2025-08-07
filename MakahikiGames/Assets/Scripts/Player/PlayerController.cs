@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public float speed = 1;
     public float jumpForce = 5;
+    public Vector3 startPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +29,15 @@ public class PlayerController : MonoBehaviour
         movementDirection.Normalize();
 
         transform.Translate(movementDirection * speed * Time.deltaTime);
-    
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Respawn"))
+        {
+            rb.linearVelocity = Vector3.zero;
+            transform.position = startPos;
+        }
     }
 }
