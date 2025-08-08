@@ -10,7 +10,11 @@ public class PlayerLook : MonoBehaviour
     public Camera maincam;
     public ThrowSpear throwSpear;
     public bool isAiming;
+    [SerializeField] private InputActionReference aimAction;
+
     public bool isCharging;
+    [SerializeField] private InputActionReference chargeAction;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,41 +24,33 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            isAiming = aimAction.action.IsPressed(); 
+            isCharging = chargeAction.action.IsPressed();
         if (isAiming)
         {
             player.transform.rotation = Quaternion.LookRotation(maincam.transform.forward);
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetButtonDown("Respawn"))
         {
-            //  player.transform.rotation = Quaternion.LookRotation(0, 0, 0); 
+            player.transform.rotation = Quaternion.LookRotation(Vector3.zero); 
         }
-        if (isAiming)
-        {
-            throwSpear.isAiming = true;
-        }
-        else
-        {
-            throwSpear.isAiming = false;
-        }
-        if (isCharging)
-        {
-            throwSpear.isCharging = true;
-        }
-        else
-        {
-            throwSpear.isCharging = false;
-        }
+        // if (isAiming)
+        // {
+        //     throwSpear.isAiming = true;
+        // }
+        // else
+        // {
+        //     throwSpear.isAiming = false;
+        // }
+        // if (isCharging)
+        // {
+        //     throwSpear.isCharging = true;
+        // }
+        // else
+        // {
+        //     throwSpear.isCharging = false;
+        // }
 
     }
-    public void OnAiming(InputValue value)
-    {
-        isAiming = value.isPressed;
-        Debug.Log("is Pressed: aiming");
-    }
-    public void OnChargeThrow(InputValue value)
-    {
-        isCharging = value.isPressed;
-        Debug.Log("is Pressed: charge");
 
-    }
 }

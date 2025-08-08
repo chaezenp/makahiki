@@ -7,6 +7,8 @@ public class PlayerInputHandler : MonoBehaviour
     public float mouseSensitivity = 0.2f;
     public float gamepadSensitivity = 3f;
     public float verticalLookLimit = 90f;
+    public float horizontalLookLimit = 180f;
+
     public bool isInputEnabled = true;
 
     private float rotationX = 0f;

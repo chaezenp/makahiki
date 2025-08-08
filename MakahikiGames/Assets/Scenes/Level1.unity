@@ -2380,6 +2380,7 @@ MonoBehaviour:
   mouseSensitivity: 0.2
   gamepadSensitivity: 3
   verticalLookLimit: 90
+  horizontalLookLimit: 180
   isInputEnabled: 1
 --- !u!114 &663517773
 MonoBehaviour:
@@ -3393,7 +3394,9 @@ MonoBehaviour:
   maincam: {fileID: 663517764}
   throwSpear: {fileID: 663517773}
   isAiming: 0
+  aimAction: {fileID: 2081839521796053632, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   isCharging: 0
+  chargeAction: {fileID: 1924182279861009138, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1087378109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,6 +5671,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 1
   jumpForce: 5
+  startPos: {x: 0, y: 0, z: 0}
+  canWalk: 0
 --- !u!114 &1853957569
 MonoBehaviour:
   m_ObjectHideFlags: 0
