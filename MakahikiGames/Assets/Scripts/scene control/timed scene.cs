@@ -15,9 +15,8 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadSceneAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay-1);
+        yield return new WaitForSeconds(delay);
         MarkIntroAsWatched();
-        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(nextSceneName);
     }
     public void MarkIntroAsWatched()

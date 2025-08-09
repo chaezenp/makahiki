@@ -61,6 +61,7 @@ public class Talkto2People : MonoBehaviour, IInteractable
                 {
                     Debug.Log("End of Dialogue");
                     isInteract = false;
+                    menuManager.inDialogue = false;
                     dialogueBox.SetActive(false);
                     Time.timeScale = 1;
                     nextText = 0;
