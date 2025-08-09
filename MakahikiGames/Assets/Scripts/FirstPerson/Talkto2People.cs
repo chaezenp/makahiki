@@ -25,8 +25,9 @@ public class Talkto2People : MonoBehaviour, IInteractable
         Time.timeScale = 0;
         dialogueBox.SetActive(true);
         dialogueText[nextText].SetActive(true);
-        Names[nextText].SetActive(true);
         Names[nextText +1].SetActive(false);
+        Names[nextText].SetActive(true);
+
 
         isInteract = true;
         menuManager.inDialogue = true;

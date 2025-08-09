@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene:
     introScene: intro
-    watchedOnce: 1
+    watchedOnce: 0

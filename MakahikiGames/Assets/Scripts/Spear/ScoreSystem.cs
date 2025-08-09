@@ -33,6 +33,8 @@ public class ScoreSystem : MonoBehaviour
     public bool isLose = false;
     public float ammoRemaining;
     public bool isThrown;
+    public bool onGround = false;
+    public bool inTree = false;
 
     void Start()
     {
@@ -116,11 +118,11 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
-        if (score < scoreToBeat && ammoRemaining == 0 && !isThrown && !isPractice)
+        if (score < scoreToBeat && ammoRemaining == 0 && !isPractice && isLose && (onGround || inTree))
         {
+            Debug.Log("Is LOse");
             uiManager.YouLose(true);
             throwSpear.isWin = true;
-            isLose = true;
             timerOn = true;
         }
         if (timerOn)

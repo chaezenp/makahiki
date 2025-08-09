@@ -36,6 +36,7 @@ public class ThrowSpear : MonoBehaviour
     public UIManager uiManager;
     public ScoreSystem pointSystem;
     public CameraSwitch CameraSwitch;
+    public GameObject reloadIndicator;
     public wind wind;
     [SerializeField] private InputActionReference aimAction;
     [SerializeField] private InputActionReference chargeAction;
@@ -58,36 +59,36 @@ public class ThrowSpear : MonoBehaviour
             ammoRemaining = maxAmmo;
         }
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-
+        reloadIndicator.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-            isAiming = aimAction.action.IsPressed(); 
-            isCharging = chargeAction.action.IsPressed();
-            canReset = spearCollision.canReset;
-            
+        isAiming = aimAction.action.IsPressed();
+        isCharging = chargeAction.action.IsPressed();
+        canReset = spearCollision.canReset;
 
         if (!isWin)
         {
             if (!isMoving)
             {
+                reloadIndicator.SetActive(canReset);
                 if (!isAiming && strength > 0)
                 {
-                        rb.constraints = RigidbodyConstraints.None;
-                        Throw();
-                        timer = 0f;
-                        strength = 0f;
-                        isMoving = false;
-                        readyThrow = false;
-                        isThrown = true;
-                        spearCollision.isThrown = isThrown;
-                        wind.isThrown = isThrown;
-                        ammoRemaining--;
-                        uiManager.ammoRemaining(ammoRemaining);
-                        pointSystem.ammoRemaining = ammoRemaining;
-                        pointSystem.isThrown = isThrown;
+                    rb.constraints = RigidbodyConstraints.None;
+                    Throw();
+                    timer = 0f;
+                    strength = 0f;
+                    isMoving = false;
+                    readyThrow = false;
+                    isThrown = true;
+                    spearCollision.isThrown = isThrown;
+                    wind.isThrown = isThrown;
+                    ammoRemaining--;
+                    uiManager.ammoRemaining(ammoRemaining);
+                    pointSystem.ammoRemaining = ammoRemaining;
+                    pointSystem.isThrown = isThrown;
                 }
                 if (isAiming && !isThrown)
                 {
@@ -129,6 +130,10 @@ public class ThrowSpear : MonoBehaviour
             Debug.Log("WINNER");
             CameraSwitch.CamReset();
             UnityEngine.Cursor.lockState = CursorLockMode.None;
+        }
+        if (ammoRemaining == 0)
+        {
+            reloadIndicator.SetActive(false);
         }
     }
     void Throw()

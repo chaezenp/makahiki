@@ -5,6 +5,10 @@ interface IInteractable
 {
     public void Interact();
 }
+interface IInteractText
+{
+    public void InteractIndicator(bool isIN);
+}
 public class Interact : MonoBehaviour
 {
     [SerializeField] private InputActionReference interactAction;
@@ -13,32 +17,59 @@ public class Interact : MonoBehaviour
     public Transform InteractionSource;
     public float InteractRange;
     public bool isPaused = false;
+    private IInteractText lastInteractText;
+
 
 
     // Update is called once per frame
     void Update()
     {
         interact = interactAction.action.IsPressed();
-        if (Time.timeScale == 0f)
+        isPaused = Time.timeScale == 0f;
+
+        if (isPaused)
         {
-            isPaused = true;
+            if (lastInteractText != null)
+        {
+            lastInteractText.InteractIndicator(false);
+            lastInteractText = null;
         }
-        else
-        {
-            isPaused = false;
+        return;
         }
-        if (!isPaused)
-        {
-            if (interact && !isTalking)
-            {
-                Ray r = new Ray(InteractionSource.position, InteractionSource.forward);
-                if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+
+            Ray r = new Ray(InteractionSource.position, InteractionSource.forward);
+            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
                 {
-                    if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-                    {
-                        isTalking = true;
-                        interactObj.Interact();
-                    }
+                    // Try to get both interfaces
+                var interactable = hitInfo.collider.GetComponent<IInteractable>();
+                var interactText = hitInfo.collider.GetComponent<IInteractText>();
+
+                // Handle UI: if looking at a new interactable, hide previous and show new
+                if (interactText != null && interactText != lastInteractText)
+                {
+                    // Hide previous
+                    if (lastInteractText != null)
+                        lastInteractText.InteractIndicator(false);
+
+                    // Show current
+                    interactText.InteractIndicator(true);
+                    lastInteractText = interactText;
+                }
+
+                // If interact button is pressed and not talking yet
+                if (interactable != null && interact && !isTalking)
+                {
+                    isTalking = true;
+                    interactable.Interact();
+                }
+            }
+            else
+            {
+                // Nothing hit → hide last interact UI
+                if (lastInteractText != null)
+                {
+                    lastInteractText.InteractIndicator(false);
+                    lastInteractText = null;
                 }
             }
             if (Time.timeScale > 0f)
@@ -48,5 +79,3 @@ public class Interact : MonoBehaviour
 
         }
     }
-
-}
