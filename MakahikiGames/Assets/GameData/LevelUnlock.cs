@@ -12,19 +12,33 @@ public class LevelUnlock : MonoBehaviour
     {
         // Find the previous level
         string previousLevel = GetPreviousLevelName();
-
+    
         // Only activate this portal if the previous level was won (or it's the first level)
         if (string.IsNullOrEmpty(previousLevel) || levelProgress.HasWonLevel(previousLevel))
         {
             levelTrigger.SetActive(true); // Show portal
-            level2Indicator.SetActive(true);
-            blockBush.SetActive(false);
+
+            if (level2Indicator != null)
+            {
+                level2Indicator.SetActive(true);
+            }
+            if (blockBush != null)
+            {
+                blockBush.SetActive(false);
+            }
         }
         else
         {
             levelTrigger.SetActive(false); // Hide or lock portal
-            level2Indicator.SetActive(false);
-            blockBush.SetActive(true);
+
+            if (level2Indicator != null)
+            {
+                level2Indicator.SetActive(false);
+            }
+            if (blockBush != null)
+            {
+                blockBush.SetActive(true);
+            }
         }
     }
 

@@ -3637,7 +3637,7 @@ MonoBehaviour:
   spear: {fileID: 1108460780}
   spearTip: {x: 0, y: 0, z: 0}
   spearHead: {fileID: 1725094724}
-  levelProgress: {fileID: 11400000, guid: 1bf89a64b8319844488b8b222fd24d96, type: 2}
+  levelProgress: {fileID: 11400000, guid: 73fae2c1c87dab44ba4e863105c1b8a3, type: 2}
   scoreToBeat: 6
   secondArea: TalkArea
   firstArea: TalkArea
