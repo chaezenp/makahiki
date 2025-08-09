@@ -1828,6 +1828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardUI: {fileID: 676114377}
   gamepadUI: {fileID: 336830623}
+  useMouseInsteadOfKeyboard: 0
+  sceneToForceGamepad: TalkArea
 --- !u!1 &91532951
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,6 +2244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardUI: {fileID: 1676379340}
   gamepadUI: {fileID: 329292394}
+  useMouseInsteadOfKeyboard: 0
+  sceneToForceGamepad: TalkArea
 --- !u!1001 &144860957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2668,6 +2672,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardUI: {fileID: 91532951}
   gamepadUI: {fileID: 191588742}
+  useMouseInsteadOfKeyboard: 0
+  sceneToForceGamepad: TalkArea
 --- !u!4 &165937098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086679688613353623, guid: 010bcf754a43f2f43be9d81696558da8, type: 3}
@@ -5899,7 +5905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 793988848}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &355670261
@@ -12631,6 +12637,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardUI: {fileID: 251061885}
   gamepadUI: {fileID: 689014138}
+  useMouseInsteadOfKeyboard: 0
+  sceneToForceGamepad: TalkArea
 --- !u!4 &844573895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086679688613353623, guid: 010bcf754a43f2f43be9d81696558da8, type: 3}
@@ -14373,7 +14381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1341549536506005850, guid: 9e5740b60749dca478b17dae0d800362, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.93
+      value: 43.25
       objectReference: {fileID: 0}
     - target: {fileID: 1341549536506005850, guid: 9e5740b60749dca478b17dae0d800362, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14381,7 +14389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1341549536506005850, guid: 9e5740b60749dca478b17dae0d800362, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 86.84
+      value: 88.09
       objectReference: {fileID: 0}
     - target: {fileID: 1341549536506005850, guid: 9e5740b60749dca478b17dae0d800362, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14417,7 +14425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5888266514529893937, guid: 9e5740b60749dca478b17dae0d800362, type: 3}
       propertyPath: m_SortingOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14820,6 +14828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardUI: {fileID: 982745521}
   gamepadUI: {fileID: 697478698}
+  useMouseInsteadOfKeyboard: 0
+  sceneToForceGamepad: TalkArea
 --- !u!1001 &988326665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16091,6 +16101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardUI: {fileID: 894317693}
   gamepadUI: {fileID: 2078534341}
+  useMouseInsteadOfKeyboard: 0
+  sceneToForceGamepad: TalkArea
 --- !u!1 &1099124404
 GameObject:
   m_ObjectHideFlags: 0
@@ -20974,6 +20986,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardUI: {fileID: 368478707}
   gamepadUI: {fileID: 34746385}
+  useMouseInsteadOfKeyboard: 0
+  sceneToForceGamepad: TalkArea
 --- !u!1001 &1464047878
 PrefabInstance:
   m_ObjectHideFlags: 0
