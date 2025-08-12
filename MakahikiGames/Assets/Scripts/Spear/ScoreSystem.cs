@@ -13,6 +13,7 @@ public class ScoreSystem : MonoBehaviour
     public GameObject spear;
     public Vector3 spearTip;
     public GameObject spearHead;
+    public LevelProgress levelProgress;
 
     public int scoreToBeat = 5;
     public string secondArea;
@@ -32,6 +33,8 @@ public class ScoreSystem : MonoBehaviour
     public bool isLose = false;
     public float ammoRemaining;
     public bool isThrown;
+    public bool onGround = false;
+    public bool inTree = false;
 
     void Start()
     {
@@ -93,6 +96,8 @@ public class ScoreSystem : MonoBehaviour
                 throwSpear.isWin = true;
                 isWin = true;
                 timerOn = true;
+                string currentLevelName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                levelProgress.SetLevelWon(currentLevelName);
             }
         }
     }
@@ -113,11 +118,11 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
-        if (score < scoreToBeat && ammoRemaining == 0 && !isThrown && !isPractice)
+        if (score < scoreToBeat && ammoRemaining == 0 && !isPractice && isLose && (onGround || inTree))
         {
+            Debug.Log("Is LOse");
             uiManager.YouLose(true);
             throwSpear.isWin = true;
-            isLose = true;
             timerOn = true;
         }
         if (timerOn)

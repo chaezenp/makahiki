@@ -7,6 +7,8 @@ public class PlayerInputHandler : MonoBehaviour
     public float mouseSensitivity = 0.2f;
     public float gamepadSensitivity = 3f;
     public float verticalLookLimit = 90f;
+    public float horizontalLookLimit = 180f;
+
     public bool isInputEnabled = true;
 
     private float rotationX = 0f;
@@ -42,13 +44,19 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void HandleLook(Vector2 input, InputDevice device)
     {
+        
         float sensitivity = (device is Mouse) ? mouseSensitivity : gamepadSensitivity;
 
         rotationY += input.x * sensitivity;
         rotationX -= input.y * sensitivity;
 
         rotationX = Mathf.Clamp(rotationX, -verticalLookLimit, verticalLookLimit);
+        rotationY = Mathf.Clamp(rotationY, -horizontalLookLimit, horizontalLookLimit);
 
-        transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+        //transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+        Quaternion xRotation = Quaternion.AngleAxis(rotationX, Vector3.right);
+        Quaternion yRotation = Quaternion.AngleAxis(rotationY, Vector3.up);
+        transform.localRotation = yRotation * xRotation;
+
     }
 }

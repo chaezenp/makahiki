@@ -1,5 +1,5 @@
 using Unity.VisualScripting;
-using UnityEditor.Callbacks;
+//using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class SpearCollision : MonoBehaviour
@@ -12,6 +12,7 @@ public class SpearCollision : MonoBehaviour
     public Vector3 TheLine;
 
     private bool onGround;
+    private bool inTree;
     private float timer = 0.0f;
     private int seconds = 0;
     public bool isThrown;
@@ -26,6 +27,7 @@ public class SpearCollision : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         onGround = false;
+        inTree = false;
         isThrown = false;
         timerOn = false;
         savedWait = waitime;
@@ -43,14 +45,19 @@ public class SpearCollision : MonoBehaviour
             if (seconds > waitime)
             {
                 CameraSwitch.CamReset();
+                scoreSystem.isLose = true;
                 //NextSpear.Next();
                 timerOn = false;
                 onGround = false;
                 canReset = true;
                 timer = 0;
                 waitime = savedWait;
+                inTree = false;
             }
         }
+        scoreSystem.onGround = onGround;
+        scoreSystem.inTree = inTree;
+
     }
 
     void FixedUpdate()
@@ -74,10 +81,13 @@ public class SpearCollision : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotationX;
             rb.constraints = RigidbodyConstraints.FreezeRotationZ;
             rb.constraints = RigidbodyConstraints.FreezeRotationY;
+            scoreSystem.onGround = true;
+
         }
         if (collision.CompareTag("Out"))
         {
             timerOn = true;
+            scoreSystem.onGround = true;
             waitime = 0;
         }
     }
@@ -112,7 +122,7 @@ public class SpearCollision : MonoBehaviour
             Vector3 contactNormal = -contact.normal;
             float dot = Vector3.Dot(spearForward, contactNormal);
 
-            float hitangleThreshold = 0.85f;
+            float hitangleThreshold = 0.75f;
 
             if (dot > hitangleThreshold) // Only stick if tip hits target
             {
@@ -138,6 +148,7 @@ public class SpearCollision : MonoBehaviour
             Debug.DrawRay(contact.point, Vector3.up * 2, Color.cyan, 5f);
 
             timerOn = true;
+            inTree = true;
         }
     }
     void OnDrawGizmos()
