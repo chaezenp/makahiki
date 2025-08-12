@@ -35,6 +35,7 @@ public class ScoreSystem : MonoBehaviour
     public bool isThrown;
     public bool onGround = false;
     public bool inTree = false;
+    public GameObject RetryMenu;
 
     void Start()
     {
@@ -140,7 +141,7 @@ public class ScoreSystem : MonoBehaviour
                 }
                 if (isLose)
                 {
-                    SceneManager.LoadScene(firstArea);
+                    RetryMenu.SetActive(true);
                 }
             }
         }

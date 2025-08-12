@@ -8,8 +8,12 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject PauseMenu;
     public GameObject OptionsMenu;
+    public GameObject ControlsMenu;
+    public GameObject keyboardCont;
+    public GameObject controllerCont;
     public GameObject firstButtonInOptions;
     public GameObject firstButtonInPauseMenu;
+    public GameObject firstButtonInControlsMenu;
     public PlayerInputHandler playerInputHandler;
     public FPPlayerInputHandler FPplayerInputHandler;
     public PlayerInputHandler overlayCameraInputHandler;
@@ -24,6 +28,8 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         PauseMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
+        ControlsMenu.SetActive(false);
         inDialogue = false;
     }
 
@@ -106,6 +112,19 @@ public class MenuManager : MonoBehaviour
         OptionsMenu.SetActive(false);
         PauseFirstButton();
     }
+    public void ControlMenu()
+    {
+        PauseMenu.SetActive(false);
+        ControlsMenu.SetActive(true);
+        ControlsFirstButton();
+    }
+    public void controlsBack()
+    {
+        ControlsMenu.SetActive(false);
+        PauseMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
+        PauseFirstButton();
+    }
     public void QuitGame()
     {
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -119,10 +138,27 @@ public class MenuManager : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(firstButtonInOptions.gameObject);
     }
-            void PauseFirstButton()
-        {
-            EventSystem.current.SetSelectedGameObject(null); 
+    void PauseFirstButton()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
 
-            EventSystem.current.SetSelectedGameObject(firstButtonInPauseMenu.gameObject);
-        }
+        EventSystem.current.SetSelectedGameObject(firstButtonInPauseMenu.gameObject);
+    }
+
+    void ControlsFirstButton()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+
+        EventSystem.current.SetSelectedGameObject(firstButtonInControlsMenu.gameObject);
+    }
+    public void KeyBoardControlsSwitch()
+    {
+        keyboardCont.SetActive(true);
+        controllerCont.SetActive(false);
+    }
+        public void ControllerControlsSwitch()
+    {
+            keyboardCont.SetActive(false);
+            controllerCont.SetActive(true);
+    }
 }
