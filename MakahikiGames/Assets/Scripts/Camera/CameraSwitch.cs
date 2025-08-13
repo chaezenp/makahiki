@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class CameraSwitch : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class CameraSwitch : MonoBehaviour
     public Vector3 cam2StartPos;
     public Vector3 MainCamSetPos;
     public GameObject Parentspear;
+    public Transform target;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +35,7 @@ public class CameraSwitch : MonoBehaviour
     {
         cameras[0].gameObject.SetActive(true);
         cameras[1].gameObject.SetActive(false);
+        cameras[0].transform.LookAt(target, Vector3.forward);
         Debug.Log("RESET-CAM");
         // MainCam.transform.SetParent(Parentspear.transform, false);
         // MainCam.transform.position = MainCamSetPos;
