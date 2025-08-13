@@ -27,6 +27,8 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputActions.Player.Look.performed += OnLookPerformed;
         playerInputActions.Player.Aiming.performed += ctx => OnAimChanged?.Invoke(true);
         playerInputActions.Player.Aiming.canceled += ctx => OnAimChanged?.Invoke(false);
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSens", mouseSensitivity);
+        gamepadSensitivity = PlayerPrefs.GetFloat("ControllerSens", gamepadSensitivity);
 
     }
 
@@ -38,13 +40,13 @@ public class PlayerInputHandler : MonoBehaviour
         if (!isInputEnabled) return;
 
         Vector2 lookInput = context.ReadValue<Vector2>();
-//        Debug.Log("Look Input: " + lookInput);
+        //        Debug.Log("Look Input: " + lookInput);
         OnLookInput?.Invoke(lookInput);
     }
 
     public void HandleLook(Vector2 input, InputDevice device)
     {
-        
+
         float sensitivity = (device is Mouse) ? mouseSensitivity : gamepadSensitivity;
 
         rotationY += input.x * sensitivity;
@@ -58,5 +60,18 @@ public class PlayerInputHandler : MonoBehaviour
         Quaternion yRotation = Quaternion.AngleAxis(rotationY, Vector3.up);
         transform.localRotation = yRotation * xRotation;
 
+    }
+
+    public void SetMouseSens(float sens)
+    {
+        mouseSensitivity = sens;
+        PlayerPrefs.SetFloat("MouseSens", sens);
+        PlayerPrefs.Save();
+    }
+    public void SetControllerSens(float sens)
+    {
+        gamepadSensitivity = sens;
+        PlayerPrefs.SetFloat("ControllerSens", sens);
+        PlayerPrefs.Save();
     }
 }

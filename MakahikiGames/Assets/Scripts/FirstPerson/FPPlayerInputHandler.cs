@@ -23,7 +23,8 @@ public class FPPlayerInputHandler : MonoBehaviour
         playerInputActions = new InputSystem_Actions();
 
         playerInputActions.Player.FPLook.performed += OnFPLookPerformed;
-
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSens", mouseSensitivity);
+        gamepadSensitivity = PlayerPrefs.GetFloat("ControllerSens", gamepadSensitivity);
 
     }
 
@@ -53,8 +54,20 @@ public class FPPlayerInputHandler : MonoBehaviour
 
     public void Update()
     {
-    orientation.rotation = Quaternion.Euler(0, rotationY, 0);
+        orientation.rotation = Quaternion.Euler(0, rotationY, 0);
 
     }
-
+    
+    public void SetMouseSens(float sens)
+    {
+        mouseSensitivity = sens;
+        PlayerPrefs.SetFloat("MouseSens", sens);
+        PlayerPrefs.Save();
+    }
+    public void SetControllerSens(float sens)
+    {
+        gamepadSensitivity = sens;
+        PlayerPrefs.SetFloat("ControllerSens", sens);
+        PlayerPrefs.Save();
+    }
 }
