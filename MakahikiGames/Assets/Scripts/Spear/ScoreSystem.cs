@@ -93,10 +93,13 @@ public class ScoreSystem : MonoBehaviour
         {
             if (score >= scoreToBeat)
             {
+                SoundManager.BGMusicSofter();
+                SoundManager.PlayOneShot(SoundType.WIN, 0.7f);
                 uiManager.YouWin(true);
                 throwSpear.isWin = true;
                 isWin = true;
                 timerOn = true;
+                waitime = 10;
                 string currentLevelName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
                 levelProgress.SetLevelWon(currentLevelName);
             }
@@ -119,10 +122,15 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
-        if (score < scoreToBeat && ammoRemaining == 0 && !isPractice && isLose && (onGround || inTree))
+        if (score < scoreToBeat && ammoRemaining == 0 && !isPractice && isLose && (onGround || inTree)&& !isWin)
         {
             Debug.Log("Is LOse");
+            SoundManager.StopSound();
+            SoundManager.BGMusicSofter();
+            SoundManager.PlayOneShot(SoundType.LOSE, 0.5f);
+            Debug.Log("Play Music");
             uiManager.YouLose(true);
+            RetryMenu.SetActive(true);
             throwSpear.isWin = true;
             timerOn = true;
         }
@@ -139,9 +147,9 @@ public class ScoreSystem : MonoBehaviour
                 {
                     SceneManager.LoadScene(secondArea);
                 }
-                if (isLose)
+                if (isLose && !isWin)
                 {
-                    RetryMenu.SetActive(true);
+                    //RetryMenu.SetActive(true);
                 }
             }
         }

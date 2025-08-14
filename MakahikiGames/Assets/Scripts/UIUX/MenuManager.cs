@@ -9,11 +9,13 @@ public class MenuManager : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject OptionsMenu;
     public GameObject ControlsMenu;
+    public GameObject SoundMenu;
     public GameObject keyboardCont;
     public GameObject controllerCont;
     public GameObject firstButtonInOptions;
     public GameObject firstButtonInPauseMenu;
     public GameObject firstButtonInControlsMenu;
+    public GameObject firstButtonInMusicMenu;
     public PlayerInputHandler playerInputHandler;
     public FPPlayerInputHandler FPplayerInputHandler;
     public PlayerInputHandler overlayCameraInputHandler;
@@ -30,6 +32,7 @@ public class MenuManager : MonoBehaviour
         PauseMenu.SetActive(false);
         OptionsMenu.SetActive(false);
         ControlsMenu.SetActive(false);
+        SoundMenu.SetActive(false);
         inDialogue = false;
     }
 
@@ -81,6 +84,9 @@ public class MenuManager : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         isPaused = false;
         Time.timeScale = 1f;
+        controlsBack();
+        optionBack();
+        MusicBack();
         PauseMenu.SetActive(false);
         if (playerInputHandler != null)
         {
@@ -122,7 +128,18 @@ public class MenuManager : MonoBehaviour
     {
         ControlsMenu.SetActive(false);
         PauseMenu.SetActive(true);
-        OptionsMenu.SetActive(false);
+        PauseFirstButton();
+    }
+    public void MusicMenu()
+    {
+        PauseMenu.SetActive(false);
+        SoundMenu.SetActive(true);
+        MusicFirstButton();
+    }
+    public void MusicBack()
+    {
+        SoundMenu.SetActive(false);
+        PauseMenu.SetActive(true);
         PauseFirstButton();
     }
     public void QuitGame()
@@ -156,9 +173,16 @@ public class MenuManager : MonoBehaviour
         keyboardCont.SetActive(true);
         controllerCont.SetActive(false);
     }
-        public void ControllerControlsSwitch()
+    public void ControllerControlsSwitch()
     {
-            keyboardCont.SetActive(false);
-            controllerCont.SetActive(true);
+        keyboardCont.SetActive(false);
+        controllerCont.SetActive(true);
+    }
+    
+        void MusicFirstButton()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+
+        EventSystem.current.SetSelectedGameObject(firstButtonInMusicMenu.gameObject);
     }
 }
