@@ -90,6 +90,11 @@ public class SpearCollision : MonoBehaviour
             scoreSystem.onGround = true;
             waitime = 0;
         }
+        if (collision.CompareTag("Water"))
+        {
+            SoundManager.StopSound();
+            SoundManager.PlayOneShot(SoundType.SPEARSPLASH, 0.5f);
+        }
     }
 
     public void OnTriggerExit(Collider collision)
@@ -108,6 +113,8 @@ public class SpearCollision : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            SoundManager.StopSound();
+            SoundManager.PlayOneShot(SoundType.SPEARMISS);
             Vector3 hitPoint = collision.contacts[0].point;
             Debug.Log("Spear hit ground at: " + hitPoint);
             rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -116,6 +123,8 @@ public class SpearCollision : MonoBehaviour
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("BanaTree"))
         {
+            SoundManager.StopSound();
+            SoundManager.PlayOneShot(SoundType.SPEARHIT);
             ContactPoint contact = collision.contacts[0];
             Debug.Log("Spear hit target at: " + contact.point);
             Vector3 spearForward = transform.up;

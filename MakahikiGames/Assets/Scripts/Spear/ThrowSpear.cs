@@ -100,6 +100,7 @@ public class ThrowSpear : MonoBehaviour
                     }
                     if (!isCharging && readyThrow)
                     {
+                        SoundManager.PlayOneShot(SoundType.SPEARTHROW);
                         rb.constraints = RigidbodyConstraints.None;
                         Throw();
                         timer = 0f;
@@ -114,7 +115,7 @@ public class ThrowSpear : MonoBehaviour
                         pointSystem.ammoRemaining = ammoRemaining;
                         pointSystem.isThrown = isThrown;
                         //drawArc.isThrown = isThrown;
-
+                        if(isThrown) SoundManager.PlayOneShot(SoundType.SPEARWIND);
                     }
 
                 }
@@ -150,7 +151,7 @@ public class ThrowSpear : MonoBehaviour
             //Camera forward aim
             rb.AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
             //For Spawn in version
-            
+
             //GameObject spear = Instantiate(spearObject, spearPos.position, transform.rotation);
             //spear.GetComponent<Rigidbody>().AddForce(Maincam.transform.forward * strength, ForceMode.Impulse);
         }
