@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 98147611}
   - component: {fileID: 98147616}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: CHIBI SEAN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +315,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98147610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -375,6 +375,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1671224291}
+  - {fileID: 1532949754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &98147616
@@ -687,6 +688,95 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &238699381
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 98147615}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 39.563026
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 39.563034
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 39.563026
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.089999914
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.118389845
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.63423836
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.62841535
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.31219673
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.3246061
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -88.889
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -38.098
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 91.625
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f0590d4a7ae0f784792aa559c6fd0771, type: 2}
+    - target: {fileID: -1684107799473140416, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59fb8f5f793851240a5d37f3da603dfc, type: 2}
+    - target: {fileID: 919132149155446097, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: m_Name
+      value: CHIBI SEAN (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389381061956482650, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59fb8f5f793851240a5d37f3da603dfc, type: 2}
+    - target: {fileID: 6317578925029434746, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ef2ce276fe6d29b42b8ab1959266fde5, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
 --- !u!4 &293471707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
@@ -2891,6 +2981,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -59.621, y: -46.248, z: 191.981}
+--- !u!4 &1532949754 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e4a57d35b5bbc543a3a31db7b0bf7ff, type: 3}
+  m_PrefabInstance: {fileID: 238699381}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1538962150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3251,7 +3346,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671224290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
