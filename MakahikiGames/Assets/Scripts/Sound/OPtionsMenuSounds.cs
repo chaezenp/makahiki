@@ -10,9 +10,9 @@ public class OPtionsMenuSounds : MonoBehaviour
     private void Start()
     {
         // Load saved values or default
-        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1f);
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
 
         ApplyVolumeSettings();
     }
@@ -37,6 +37,7 @@ public class OPtionsMenuSounds : MonoBehaviour
 
     private void ApplyVolumeSettings()
     {
+        Debug.Log("Sliders Update");
         OnMasterVolumeChanged(masterSlider.value);
         OnMusicVolumeChanged(musicSlider.value);
         OnSFXVolumeChanged(sfxSlider.value);

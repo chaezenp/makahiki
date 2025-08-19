@@ -37,9 +37,10 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
-        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+            MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+            MusicVolume = PlayerPrefs.GetFloat("MusicVolume", .5f);
+            SFXVolume = PlayerPrefs.GetFloat("SFXVolume", .5f);
+        Debug.Log("Volume values: " + MasterVolume + " " + MusicVolume + " " + SFXVolume);
         }
         else
         {

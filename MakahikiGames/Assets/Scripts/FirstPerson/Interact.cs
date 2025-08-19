@@ -9,6 +9,10 @@ interface IInteractText
 {
     public void InteractIndicator(bool isIN);
 }
+interface InteractLight
+{
+    public void InteractLight(bool Talked2Before);
+}
 public class Interact : MonoBehaviour
 {
     [SerializeField] private InputActionReference interactAction;
@@ -43,24 +47,26 @@ public class Interact : MonoBehaviour
                     // Try to get both interfaces
                 var interactable = hitInfo.collider.GetComponent<IInteractable>();
                 var interactText = hitInfo.collider.GetComponent<IInteractText>();
+                var interactLight = hitInfo.collider.GetComponent<InteractLight>();
 
                 // Handle UI: if looking at a new interactable, hide previous and show new
-                if (interactText != null && interactText != lastInteractText)
-                {
-                    // Hide previous
-                    if (lastInteractText != null)
-                        lastInteractText.InteractIndicator(false);
+            if (interactText != null && interactText != lastInteractText)
+            {
+                // Hide previous
+                if (lastInteractText != null)
+                    lastInteractText.InteractIndicator(false);
 
-                    // Show current
-                    interactText.InteractIndicator(true);
-                    lastInteractText = interactText;
-                }
+                // Show current
+                interactText.InteractIndicator(true);
+                lastInteractText = interactText;
+            }
 
-                // If interact button is pressed and not talking yet
-                if (interactable != null && interact && !isTalking)
-                {
-                    isTalking = true;
-                    interactable.Interact();
+            // If interact button is pressed and not talking yet
+            if (interactable != null && interact && !isTalking)
+            {
+                isTalking = true;
+                interactable.Interact();
+                interactLight.InteractLight(true);
                 }
             }
             else
