@@ -2775,7 +2775,7 @@ MonoBehaviour:
     m_Bits: 64
   Maincam: {fileID: 663517764}
   strength: 0
-  strengthMult: 9
+  strengthMult: 9.2
   maxCharge: 50
   isAiming: 0
   isCharging: 0
@@ -8184,7 +8184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608668409964943591, guid: 8ee82c00dd16332449b2eb2b81dc9347, type: 3}
       propertyPath: moveSpeed
-      value: 0.37
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 2608668409964943591, guid: 8ee82c00dd16332449b2eb2b81dc9347, type: 3}
       propertyPath: spearModel
