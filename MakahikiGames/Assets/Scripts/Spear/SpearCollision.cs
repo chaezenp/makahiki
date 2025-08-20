@@ -20,6 +20,7 @@ public class SpearCollision : MonoBehaviour
     public int waitime = 5;
     public int savedWait;
     public bool canReset;
+    public bool upDraft;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,6 +33,7 @@ public class SpearCollision : MonoBehaviour
         timerOn = false;
         savedWait = waitime;
         canReset = false;
+        upDraft = false;
     }
 
     // Update is called once per frame
@@ -68,6 +70,10 @@ public class SpearCollision : MonoBehaviour
         {
             rb.rotation = Quaternion.LookRotation(rb.linearVelocity) * Quaternion.Euler(89, 0, 0);
         }
+        if (upDraft)
+        {
+            rb.AddForce(-transform.forward * 2, ForceMode.Force);
+        }
         //Math Way with center of mass
         // rb.AddForceAtPosition(rb.linearVelocity * -0.1f, transform.TransformPoint(0,-.5f,0));   
     }
@@ -95,6 +101,11 @@ public class SpearCollision : MonoBehaviour
             SoundManager.StopSound();
             SoundManager.PlayOneShot(SoundType.SPEARSPLASH, 0.5f);
         }
+        if (collision.CompareTag("Wind"))
+        {
+            Debug.Log("IN Updraft");
+            upDraft = true;
+        }
     }
 
     public void OnTriggerExit(Collider collision)
@@ -107,6 +118,11 @@ public class SpearCollision : MonoBehaviour
                 canReset = false;
                 CameraSwitch.SpearCamSwitch();
             }
+        }
+                if (collision.CompareTag("Wind"))
+        {
+            Debug.Log("OUT Updraft");
+            upDraft = false;
         }
     }
     void OnCollisionEnter(Collision collision)
