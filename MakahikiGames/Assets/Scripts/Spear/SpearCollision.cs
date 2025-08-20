@@ -131,7 +131,7 @@ public class SpearCollision : MonoBehaviour
             Vector3 contactNormal = -contact.normal;
             float dot = Vector3.Dot(spearForward, contactNormal);
 
-            float hitangleThreshold = 0.75f;
+            float hitangleThreshold = 0.5f;
 
             if (dot > hitangleThreshold) // Only stick if tip hits target
             {
