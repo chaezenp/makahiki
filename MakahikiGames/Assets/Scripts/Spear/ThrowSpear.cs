@@ -31,6 +31,7 @@ public class ThrowSpear : MonoBehaviour
     public bool isThrown;
     public bool canReset = false;
     public bool isWin = false;
+    public bool isLose = false;
     public SpearUI SpearUI;
     public SpearCollision spearCollision;
     public UIManager uiManager;
@@ -132,10 +133,16 @@ public class ThrowSpear : MonoBehaviour
             CameraSwitch.CamReset();
             UnityEngine.Cursor.lockState = CursorLockMode.None;
         }
-        if (ammoRemaining == 0)
+        if (isLose)
         {
-            reloadIndicator.SetActive(false);
+            Debug.Log("Loser");
+            CameraSwitch.CamReset();
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
         }
+        if (ammoRemaining == 0)
+            {
+                reloadIndicator.SetActive(false);
+            }
     }
     void Throw()
     {

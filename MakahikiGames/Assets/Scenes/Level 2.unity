@@ -2585,6 +2585,7 @@ MonoBehaviour:
   isThrown: 0
   canReset: 0
   isWin: 0
+  isLose: 0
   SpearUI: {fileID: 663517770}
   spearCollision: {fileID: 1108460787}
   uiManager: {fileID: 1226611663}
@@ -6737,6 +6738,7 @@ MonoBehaviour:
   isThrown: 0
   canReset: 0
   isWin: 0
+  isLose: 0
   SpearUI: {fileID: 0}
   spearCollision: {fileID: 0}
   uiManager: {fileID: 0}
@@ -7011,6 +7013,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3182046636600727989, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3468881424130501715, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7062,6 +7068,10 @@ PrefabInstance:
     - target: {fileID: 5024356126997474624, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MusicMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5222585045792422192, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5423466146333364621, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
       propertyPath: m_Name
