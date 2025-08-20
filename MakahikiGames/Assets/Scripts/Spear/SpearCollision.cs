@@ -72,7 +72,7 @@ public class SpearCollision : MonoBehaviour
         }
         if (upDraft)
         {
-            rb.AddForce(-transform.forward * 2, ForceMode.Force);
+            rb.AddForce(-transform.forward * 1.8f, ForceMode.Force);
         }
         //Math Way with center of mass
         // rb.AddForceAtPosition(rb.linearVelocity * -0.1f, transform.TransformPoint(0,-.5f,0));   
