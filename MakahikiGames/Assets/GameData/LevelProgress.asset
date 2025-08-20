@@ -15,8 +15,11 @@ MonoBehaviour:
   levelSceneNames:
   - Level1
   - Level 2
+  - Level 3
   levels:
   - levelName: Level1
-    isWon: 0
+    isWon: 1
   - levelName: Level 2
+    isWon: 0
+  - levelName: Level 3
     isWon: 0

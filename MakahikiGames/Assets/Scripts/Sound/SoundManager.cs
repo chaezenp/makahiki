@@ -30,6 +30,9 @@ public class SoundManager : MonoBehaviour
     public static float MasterVolume = 1f;
     public static float MusicVolume = 1f;
     public static float SFXVolume = 1f;
+    public static float GetMasterVolume() => MasterVolume;
+    public static float GetMusicVolume() => MusicVolume;
+    public static float GetSFXVolume() => SFXVolume;
 
     private void Awake()
     {
@@ -37,9 +40,10 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
-        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+            MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+            MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.4f);
+            SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+            Debug.Log("Volume values: " + MasterVolume + " " + MusicVolume + " " + SFXVolume);
         }
         else
         {
@@ -55,36 +59,54 @@ public class SoundManager : MonoBehaviour
         sfxLoopSource.loop = true;
         //musicSource.playOnAwake = false;
 
-        ApplyVolumes(); // Initial volume setup
+        ApplyMusicVolume();
+        ApplySFXVolume(); // Initial volume setup
     }
+    public static void Initialize()
+    {
+        if (instance == null) return;
+
+        MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1);
+        SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
+        ApplyMusicVolume();
+        ApplySFXVolume();
+}
 
 public static void SetMasterVolume(float volume)
 {
     MasterVolume = volume;
     PlayerPrefs.SetFloat("MasterVolume", volume);
-    ApplyVolumes();
+    ApplyMusicVolume();
+    ApplySFXVolume();
 }
 
 public static void SetMusicVolume(float volume)
 {
     MusicVolume = volume;
     PlayerPrefs.SetFloat("MusicVolume", volume);
-    ApplyVolumes();
+    Debug.Log("Music Vol: " + volume);
+    ApplyMusicVolume();
 }
 
 public static void SetSFXVolume(float volume)
 {
     SFXVolume = volume;
     PlayerPrefs.SetFloat("SFXVolume", volume);
-    ApplyVolumes();
+    Debug.Log("SFX Vol: " + volume);
+    ApplySFXVolume();
 }
 
 
-    private static void ApplyVolumes()
+    private static void ApplyMusicVolume()
     {
         if (instance == null) return;
 
         instance.musicSource.volume = MusicVolume * MasterVolume;
+    }
+    private static void ApplySFXVolume()
+    {
+        if (instance == null) return;
         instance.sfxSource.volume = SFXVolume * MasterVolume;
         instance.sfxLoopSource.volume = SFXVolume * MasterVolume;
     }
@@ -112,12 +134,13 @@ public static void StopSFXLoop()
     instance.sfxLoopSource.Stop();
 }
 
-    public static void PlayBackgroundMusic(SoundType musicType = SoundType.BACKGROUND, float targetVolume = 0.75f)
+    public static void PlayBackgroundMusic(SoundType musicType = SoundType.BACKGROUND, float targetVolume = 0.5f)
     {
         AudioClip newClip = instance.soundList[(int)musicType];
         instance.musicSource.clip = newClip;
         instance.musicSource.volume = targetVolume * MusicVolume * MasterVolume;
         instance.musicSource.Play();
+        Debug.Log("Gets Called");
     }
 
         public static void StopSound()

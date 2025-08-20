@@ -20,18 +20,24 @@ public class RetryHandler : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
     public void Retry()
     {
         isRetry = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         FadeIn();
     }
 
     public void Quit()
     {
         isQuit = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         FadeIn();
     }
 
