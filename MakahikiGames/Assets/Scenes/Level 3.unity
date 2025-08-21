@@ -169,59 +169,6 @@ MonoBehaviour:
   gamepadUI: {fileID: 755429228}
   useMouseInsteadOfKeyboard: 1
   sceneToForceGamepad: TalkArea
---- !u!1 &22073013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 22073015}
-  - component: {fileID: 22073014}
-  m_Layer: 0
-  m_Name: Respawn
-  m_TagString: Respawn
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &22073014
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22073013}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &22073015
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22073013}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.049999595, y: -0.33000004, z: -25.19}
-  m_LocalScale: {x: 20, y: 1, z: 40}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1322473435}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &33887410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,6 +2449,7 @@ MonoBehaviour:
   isThrown: 0
   canReset: 0
   isWin: 0
+  isLose: 0
   SpearUI: {fileID: 663517770}
   spearCollision: {fileID: 1108460787}
   uiManager: {fileID: 1226611663}
@@ -3895,7 +3843,7 @@ MonoBehaviour:
   spearHead: {fileID: 1725094724}
   levelProgress: {fileID: 11400000, guid: 73fae2c1c87dab44ba4e863105c1b8a3, type: 2}
   scoreToBeat: 6
-  secondArea: menu
+  secondArea: Credits
   firstArea: TalkArea
   isPractice: 0
   waitime: 3
@@ -4863,7 +4811,7 @@ Transform:
   m_GameObject: {fileID: 1252292080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.40001, y: -56.5, z: 28.4588}
+  m_LocalPosition: {x: 0.40001, y: -57, z: 28.4588}
   m_LocalScale: {x: 30, y: 30.424662, z: 36.010166}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5185,7 +5133,6 @@ Transform:
   m_Children:
   - {fileID: 1970798757}
   - {fileID: 384163813}
-  - {fileID: 22073015}
   - {fileID: 2072620167}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5427,7 +5374,7 @@ GameObject:
   - component: {fileID: 1463403696}
   m_Layer: 0
   m_Name: Round
-  m_TagString: Out
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7038,6 +6985,7 @@ MonoBehaviour:
   isThrown: 0
   canReset: 0
   isWin: 0
+  isLose: 0
   SpearUI: {fileID: 0}
   spearCollision: {fileID: 0}
   uiManager: {fileID: 0}
@@ -7204,6 +7152,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3182046636600727989, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3468881424130501715, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7255,6 +7207,10 @@ PrefabInstance:
     - target: {fileID: 5024356126997474624, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MusicMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5222585045792422192, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5423466146333364621, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
       propertyPath: m_Name
@@ -7965,7 +7921,7 @@ GameObject:
   - component: {fileID: 2072620169}
   - component: {fileID: 2072620168}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: WInd
   m_TagString: Wind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

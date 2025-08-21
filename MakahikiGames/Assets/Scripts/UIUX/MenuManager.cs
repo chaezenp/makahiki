@@ -58,6 +58,7 @@ public class MenuManager : MonoBehaviour
     public void PauseGame()
     {
         UnityEngine.Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         isPaused = true;
         Time.timeScale = 0f;
         PauseMenu.SetActive(true);
@@ -82,6 +83,7 @@ public class MenuManager : MonoBehaviour
     public void ResumeGame()
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         isPaused = false;
         Time.timeScale = 1f;
         controlsBack();

@@ -131,7 +131,7 @@ public class ScoreSystem : MonoBehaviour
             Debug.Log("Play Music");
             uiManager.YouLose(true);
             RetryMenu.SetActive(true);
-            throwSpear.isWin = true;
+            throwSpear.isLose = true;
             timerOn = true;
         }
         if (timerOn)
