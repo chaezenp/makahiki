@@ -1901,7 +1901,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f8f341db29db93140966a7f88df49bf6, type: 2}
+      objectReference: {fileID: 2100000, guid: c932daa91e2a54e4798c4a82ffa1a30c, type: 2}
     - target: {fileID: 919132149155446097, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: m_Name
       value: rock model (3)
@@ -3189,7 +3189,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f8f341db29db93140966a7f88df49bf6, type: 2}
+      objectReference: {fileID: 2100000, guid: c932daa91e2a54e4798c4a82ffa1a30c, type: 2}
     - target: {fileID: 919132149155446097, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: m_Name
       value: rock model
@@ -3336,7 +3336,7 @@ PrefabInstance:
     - target: {fileID: -7918335002988649766, guid: b730c546df065a848bdb2ffb7767de7c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d5d8fe24f3970da499ba60f3f2cd0f31, type: 2}
+      objectReference: {fileID: 2100000, guid: ef7fd976abf65a84dbc37f2d94afef34, type: 2}
     - target: {fileID: -7029948723529949830, guid: b730c546df065a848bdb2ffb7767de7c, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3348,7 +3348,7 @@ PrefabInstance:
     - target: {fileID: 882129737928793925, guid: b730c546df065a848bdb2ffb7767de7c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f8f341db29db93140966a7f88df49bf6, type: 2}
+      objectReference: {fileID: 2100000, guid: c932daa91e2a54e4798c4a82ffa1a30c, type: 2}
     - target: {fileID: 919132149155446097, guid: b730c546df065a848bdb2ffb7767de7c, type: 3}
       propertyPath: m_Name
       value: makahiki.lvl3 1
@@ -3373,6 +3373,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b730c546df065a848bdb2ffb7767de7c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938687463}
     - targetCorrespondingSourceObject: {fileID: -7029948723529949830, guid: b730c546df065a848bdb2ffb7767de7c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 823395306}
@@ -3656,7 +3659,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f8f341db29db93140966a7f88df49bf6, type: 2}
+      objectReference: {fileID: 2100000, guid: c932daa91e2a54e4798c4a82ffa1a30c, type: 2}
     - target: {fileID: 919132149155446097, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: m_Name
       value: rock model (1)
@@ -3701,6 +3704,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c932daa91e2a54e4798c4a82ffa1a30c, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.840582
@@ -4717,7 +4724,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f8f341db29db93140966a7f88df49bf6, type: 2}
+      objectReference: {fileID: 2100000, guid: c932daa91e2a54e4798c4a82ffa1a30c, type: 2}
     - target: {fileID: 919132149155446097, guid: 2cee60e8ba2704249908a2f8a7cf4e60, type: 3}
       propertyPath: m_Name
       value: rock model (2)
@@ -7615,6 +7622,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 558659109984130919, guid: 15c8770f9bd99424eb1a5788d69b088d, type: 3}
   m_PrefabInstance: {fileID: 1867523786}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938687462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b730c546df065a848bdb2ffb7767de7c, type: 3}
+  m_PrefabInstance: {fileID: 972616396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1938687463
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938687462}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1970798755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8041,6 +8075,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c932daa91e2a54e4798c4a82ffa1a30c, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.3777

@@ -902,6 +902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock 1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9da0db0c2697c440913dab388ef73fb, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: 9.843469
@@ -1449,6 +1453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9da0db0c2697c440913dab388ef73fb, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.286478
@@ -2211,6 +2219,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -128.856
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e9fd6bc26f665d841b6f4f1c8d7dd55a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c1b54d4d866c954a895d33117af75a2, type: 2}
     - target: {fileID: 919132149155446097, guid: e9fd6bc26f665d841b6f4f1c8d7dd55a, type: 3}
       propertyPath: m_Name
       value: makahiki.lvl2
@@ -2459,6 +2471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock 1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9da0db0c2697c440913dab388ef73fb, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: 9.843469
@@ -4426,6 +4442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9da0db0c2697c440913dab388ef73fb, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: 6.278756
@@ -5363,6 +5383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock 1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9da0db0c2697c440913dab388ef73fb, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: -19.251667
@@ -6634,6 +6658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock 1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4076042665294886251, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9da0db0c2697c440913dab388ef73fb, type: 2}
     - target: {fileID: 5181839657800401369, guid: 46b2ff156046ea442b8fa569b11bf313, type: 3}
       propertyPath: m_LocalScale.x
       value: 9.843469
